@@ -1,0 +1,19 @@
+import sys
+from nornir import InitNornir
+from nornir_scrapli.tasks import send_command
+from nornir_utils.plugins.functions import print_result
+import getpass
+
+nr = InitNornir(config_file="config.yaml")
+
+password = getpass.getpass()
+nr.inventory.defaults.password = password
+nr.inventory.defaults.username = sys.argv[1]
+
+
+def show_command_test(task):
+    task.run(task=send_command, command="show ip interface brief")
+
+results = nr.run(task=show_command_test)
+print_result(results)
+

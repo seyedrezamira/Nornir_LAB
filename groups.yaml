@@ -1,0 +1,15 @@
+---
+Pod1:
+    platform: "cisco_nxos"
+    data:
+        ntp_server: "1.1.1.1"
+
+Pod2:
+    platform: "cisco_nxos"
+    data:
+        ntp_server: "2.2.2.2"
+
+
+Nexus:
+    platform: "cisco_nxos"
+    

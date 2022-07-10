@@ -1,0 +1,6 @@
+inte e1/1-6
+    ip router ospf 1 are 0
+    ip ospf network point-to-point
+int loo0
+    ip router ospf 1 are 0
+copy run start
