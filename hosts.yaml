@@ -1,24 +1,21 @@
 ---
-
 p0-ss1:
     hostname: "172.21.2.77"
     port: 2221
     groups:
-        - Pod1
         - Nexus
     data:
-        loopback0: "10.255.255.1"
-        bgp: "65000"
+        loopback0: "172.16.132.0"
+        bgp: "4263501000"
 
 p0-ss2:
     hostname: "172.21.2.77"
     port: 2222
     groups:
-        - Pod2
         - Nexus
     data:
-        loopback0: "10.255.255.2"
-        bgp: "65000" 
+        loopback0: "172.16.132.1"
+        bgp: "4263501000" 
 
 p1-s1:
     hostname: "172.21.2.77"
@@ -27,8 +24,8 @@ p1-s1:
         - Pod1
         - Nexus
     data:
-        loopback0: "10.255.255.11"
-        bgp: "65001"
+        loopback0: "172.16.132.2"
+        bgp: "4263501001"
 
 
 p1-s2:
@@ -38,8 +35,8 @@ p1-s2:
         - Pod1
         - Nexus
     data:
-        loopback0: "10.255.255.12"
-        bgp: "65001"
+        loopback0: "172.16.132.3"
+        bgp: "4263501001"
 
 
 p1-s3:
@@ -49,8 +46,8 @@ p1-s3:
         - Pod1
         - Nexus
     data:
-        loopback0: "10.255.255.13"
-        bgp: "65001"
+        loopback0: "172.16.132.4"
+        bgp: "4263501001"
 
 p1-s4:
     hostname: "172.21.2.77"
@@ -59,16 +56,75 @@ p1-s4:
         - Pod1
         - Nexus
     data:
-        loopback0: "10.255.255.14"
-        bgp: "65001"
+        loopback0: "1172.16.132.5"
+        bgp: "4263501001"
 
-p1-l1:
+p1-bl1a:
     hostname: "172.21.2.77"
     port: 2227
     groups:
-        - Pod2
+        - Pod1
         - Nexus
     data:
-        loopback0: "10.255.255.111"
-        bgp: "65001"
+        loopback0: "172.16.132.6"
+        loopback2: "172.16.132.14"
+        loopback3: "172.16.132.35"
+        loopback4: "172.16.132.21"
+        loopback5: "172.16.132.28"
+        bgp: "4263501002"
 
+p1-bl1b:
+    hostname: "172.21.2.77"
+    port: 2228
+    groups:
+        - Pod1
+        - Nexus
+    data:
+        loopback0: "172.16.132.8"
+        loopback2: "172.16.132.15"
+        loopback3: "172.16.132.36"
+        loopback4: "172.16.132.22"
+        loopback5: "172.16.132.29"
+        bgp: "4263501004"
+
+p1-l1a:
+    hostname: "172.21.2.77"
+    port: 22121
+    groups:
+        - Pod1
+        - Nexus
+    data:
+        loopback0: "172.16.132.11"
+        loopback2: "172.16.132.18"
+        loopback3: "172.16.132.39"
+        loopback4: "172.16.132.25"
+        loopback5: "172.16.132.32"
+        bgp: "4263501002"
+
+p1-l1b:
+    hostname: "172.21.2.77"
+    port: 22122
+    groups:
+        - Pod1
+        - Nexus
+    data:
+        loopback0: "172.16.132.12"
+        loopback2: "172.16.132.19"
+        loopback3: "172.16.132.40"
+        loopback4: "172.16.132.26"
+        loopback5: "172.16.132.33"
+        bgp: "4263501002"
+
+p1-bg:
+    hostname: "172.21.2.77"
+    port: 22125
+    groups:
+        - Pod1
+        - Nexus
+    data:
+        loopback0: "172.16.132.7"
+        loopback2: "172.16.132.13"
+        loopback3: "172.16.132.34"
+        loopback4: "172.16.132.20"
+        loopback5: "172.16.132.27"
+        bgp: "4263501003"

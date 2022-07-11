@@ -3419,3 +3419,298 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: send_configs (failed)
 2022-07-10 00:51:52,588 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 7 hosts
 2022-07-10 00:55:13,792 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 7 hosts
 2022-07-10 00:55:30,827 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 7 hosts
+2022-07-10 17:27:35,543 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 7 hosts
+2022-07-10 17:27:39,122 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:27:39,317 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:27:39,320 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:27:40,123 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:27:40,607 - nornir.core.task -    ERROR -      start() - Host 'p1-l1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:27:41,054 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:27:41,072 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:11,521 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 7 hosts
+2022-07-10 17:28:15,222 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:15,222 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:15,248 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:15,657 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:15,865 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:16,289 - nornir.core.task -    ERROR -      start() - Host 'p1-l1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:28:16,289 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/025-IP_finding.py", line 16, in find_ip
+    list1 = list(task.host["facts"][intnum]["ipv4"].values())
+KeyError: 'ipv4'
+
+2022-07-10 17:30:06,425 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 7 hosts
+2022-07-10 17:33:02,271 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 7 hosts
+2022-07-10 17:33:05,769 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-10 17:33:05,772 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-10 17:33:05,959 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-10 17:33:06,823 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-10 17:33:06,826 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-10 17:33:07,051 - nornir.core.task -    ERROR -      start() - Host 'p1-l1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-10 17:33:07,271 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'find_ip' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/026-IP_finding_dict.py", line 13, in find_ip
+    for i,v in task.host["facts"]:
+ValueError: too many values to unpack (expected 2)
+
+2022-07-11 10:53:43,181 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 10:57:58,680 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 10:58:52,104 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 10:59:30,891 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 10:59:59,666 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 11:00:19,015 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 11:00:51,597 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 11:08:45,920 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 11:22:33,191 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 12:11:10,006 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 7 hosts
+2022-07-11 12:16:37,237 -  nornir.core -     INFO -        run() - Running task 'send_config_test' with args {} on 1 hosts
+2022-07-11 12:18:11,284 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 6 hosts
+2022-07-11 12:18:32,239 -  nornir.core -     INFO -        run() - Running task 'send_config_test' with args {} on 6 hosts
+2022-07-11 12:28:34,844 -  nornir.core -     INFO -        run() - Running task 'send_config_test' with args {} on 6 hosts
+2022-07-11 12:33:41,489 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 6 hosts
+2022-07-11 12:39:24,561 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 6 hosts
+2022-07-11 12:45:43,017 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 6 hosts
+2022-07-11 14:00:40,386 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 6 hosts
+2022-07-11 14:01:00,146 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 6 hosts
+2022-07-11 15:43:00,943 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 15:43:15,827 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 15:43:48,969 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 15:48:25,939 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 16:33:59,985 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 16:37:43,577 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 16:40:01,374 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 8 hosts
+2022-07-11 17:14:57,767 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-11 17:30:42,197 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-11 23:12:05,856 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 10 hosts
+2022-07-11 23:12:45,357 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 10 hosts
+2022-07-11 23:17:20,306 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 10 hosts
+2022-07-11 23:19:33,993 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 10 hosts
+2022-07-11 23:20:33,687 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-11 23:20:35,988 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:35,990 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,045 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,371 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,377 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,442 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,374 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,514 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,516 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:20:36,516 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/023-01Condition+Genie.py", line 13, in show_command_test
+    model = task.host["facts"]["platform"]["hardware"]["model"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-11 23:21:05,812 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-11 23:21:39,660 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-11 23:22:30,445 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-11 23:36:55,157 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 10 hosts
+2022-07-12 00:25:45,942 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 11 hosts
+2022-07-12 00:26:30,917 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 11 hosts
+2022-07-12 00:27:05,754 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 11 hosts
+2022-07-12 00:27:53,890 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 11 hosts
+2022-07-12 00:28:18,064 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 11 hosts
+2022-07-12 00:28:56,943 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 11 hosts
