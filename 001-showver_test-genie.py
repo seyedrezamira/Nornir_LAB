@@ -10,7 +10,7 @@ nr = InitNornir(config_file="config.yaml")
 hosts_dict = {}
 
 def show_command(task):
-    showver = task.run(task=netmiko_send_command, command_string="show cdp nei", use_genie=True)
+    showver = task.run(task=netmiko_send_command, command_string="show license usage", use_genie=True)
     task.host["items"] = showver.result
     # version = task.host["items"]["platform"]["software"]["system_version"]
     # hosts_dict[task.host] = version
