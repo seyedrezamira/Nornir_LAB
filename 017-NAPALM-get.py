@@ -5,7 +5,12 @@ from nornir_utils.plugins.functions import print_result
 nr = InitNornir(config_file="config.yaml")
 
 def pull_random_info(task):
-    task.run(task=napalm_get, getters=["get_facts","get_interfaces"])
+    get_vlan = task.run(task=napalm_get, getters="get_vlans")
+    task.host["items"]= get_vlan.result
 
 results=nr.run(task=pull_random_info)
 print_result(results)
+
+import ipdb
+ipdb.set_trace()
+

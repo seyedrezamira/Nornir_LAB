@@ -1,2 +1,1 @@
-show ip int b
-show cdp neighb
+sho run | sec router
