@@ -3970,3 +3970,247 @@ KeyError: 'interfaces'
 
 2022-07-12 16:21:40,283 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
 >>>>>>> find_IP
+2022-07-12 17:36:48,647 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-12 17:37:05,846 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-12 17:37:25,979 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 13 hosts
+2022-07-13 10:15:39,408 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 13 hosts
+2022-07-13 10:27:16,502 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 10:27:18,257 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 12, in show_vlan
+    dic_dev_name[task.host]
+KeyError: Host: p0-ss2
+
+2022-07-13 10:27:18,252 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 12, in show_vlan
+    dic_dev_name[task.host]
+KeyError: Host: p0-ss1
+
+2022-07-13 10:28:04,199 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 10:29:23,551 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:04:45,451 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:10:21,211 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 2 hosts
+2022-07-13 11:10:27,060 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:10:27,111 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:12:11,421 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:12:13,114 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    dev_vlan_dic[task.host["items"]["interfaces"]] = vlan_id
+TypeError: unhashable type: 'dict'
+
+2022-07-13 11:12:13,114 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    dev_vlan_dic[task.host["items"]["interfaces"]] = vlan_id
+TypeError: unhashable type: 'dict'
+
+2022-07-13 11:12:57,839 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:12:59,541 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    dev_vlan_dic[task.host["items"]["interfaces"]] = vlan_id
+TypeError: unhashable type: 'dict'
+
+2022-07-13 11:12:59,542 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    dev_vlan_dic[task.host["items"]["interfaces"]] = vlan_id
+TypeError: unhashable type: 'dict'
+
+2022-07-13 11:13:18,408 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:13:20,109 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    dev_vlan_dic[task.host["items"]["interfaces"]] = vlan_id
+TypeError: unhashable type: 'dict'
+
+2022-07-13 11:13:20,114 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    dev_vlan_dic[task.host["items"]["interfaces"]] = vlan_id
+TypeError: unhashable type: 'dict'
+
+2022-07-13 11:14:43,505 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:14:45,239 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    print (task.host["items"]["interface"])
+KeyError: 'interface'
+
+2022-07-13 11:14:45,245 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 21, in show_vlan
+    print (task.host["items"]["interface"])
+KeyError: 'interface'
+
+2022-07-13 11:15:37,327 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:16:58,321 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:18:50,366 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:19:29,406 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:20:54,474 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:21:11,253 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:21:34,578 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:22:39,691 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:22:58,017 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:25:41,242 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:27:54,205 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:28:25,466 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:28:34,505 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:29:18,241 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:32:23,849 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:42:24,460 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:42:34,015 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-07-13 11:42:49,075 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-07-13 11:43:05,772 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:44:28,423 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:44:36,452 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:45:55,563 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:48:01,870 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:49:19,339 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:50:40,258 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-07-13 11:51:17,092 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 13 hosts
+2022-07-13 11:51:23,244 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,279 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,317 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,341 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,405 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,411 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,448 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,473 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,508 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:23,509 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:29,065 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:29,065 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:29,099 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-13 11:51:35,317 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 13 hosts
+2022-07-13 12:15:01,240 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 13 hosts
+2022-07-13 12:15:46,320 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 13 hosts
+2022-07-13 12:17:20,828 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
+2022-07-13 12:31:08,114 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts

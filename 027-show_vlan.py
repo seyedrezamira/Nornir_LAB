@@ -14,11 +14,11 @@ def show_vlan(task):
     rprint (f"{task.host} interface list:")
     for interface in int_list:
         vlan_id = task.host["items"]["interfaces"][interface]["vlan"]
-        if vlan_id == "trunk":
-            rprint (f"{interface}: is trunk")
+        if vlan_id != "1" and vlan_id !="routed" and vlan_id != "auto":
+            rprint (f"{interface}: \"{vlan_id}\"")
 
    
 result = nr.run(task=show_vlan)
 #print_result(result)
-# import ipdb
-# ipdb.set_trace()
+import ipdb
+ipdb.set_trace()

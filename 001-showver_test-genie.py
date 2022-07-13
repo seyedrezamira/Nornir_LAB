@@ -15,9 +15,8 @@ def show_command(task):
 
     task.host["items"] = showver.result
     list1 = list(task.host["items"]["interfaces"])
-    print (list1)
-    # version = task.host["items"]["platform"]["software"]["system_version"]
-    # hosts_dict[task.host] = version
+    version = task.host["items"]["platform"]["software"]["system_version"]
+    hosts_dict[task.host] = version
 
 
 result = nr.run(task=show_command)
