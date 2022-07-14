@@ -4214,3 +4214,161 @@ KeyError: 'platform'
 2022-07-13 12:15:46,320 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 13 hosts
 2022-07-13 12:17:20,828 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
 2022-07-13 12:31:08,114 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
+2022-07-13 14:17:33,056 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
+2022-07-13 14:45:58,559 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
+2022-07-13 14:52:41,807 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 14:54:53,345 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 14:54:55,668 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/028-Check_interfacestatus.py", line 14, in show_interface_status
+    int_list = list(task.host["items"]["interfaces"])
+KeyError: 'interfaces'
+
+2022-07-13 15:09:10,001 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:11:41,352 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:12:15,790 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:12:53,385 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:13:28,413 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:14:13,497 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:14:28,584 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-13 15:14:28,584 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/029-Check_interface.py", line 12, in show_interface_status
+    show_interface_status = task.run(task=send_command, command="show vlan brief")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-13 15:15:00,135 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:15:15,221 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-13 15:15:15,222 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/029-Check_interface.py", line 12, in show_interface_status
+    show_interface_status = task.run(task=send_command, command="show vlan brief")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-13 15:15:51,057 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:18:10,517 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:18:40,512 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:19:06,883 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 15:22:52,323 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 16:36:50,670 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 17:29:16,704 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 23:49:36,032 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 23:56:31,067 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-13 23:58:31,705 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 10:07:29,492 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 10:07:44,581 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-14 10:07:44,582 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/030-Set-CDP_neighbor.py", line 10, in show_interface_status
+    show_interface_status = task.run(task=send_command, command="show cdp neighbor")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-14 10:08:45,975 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 10:20:55,981 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 10:25:06,053 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 10:26:21,120 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
+2022-07-14 10:26:59,656 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
