@@ -1,0 +1,5 @@
+feature ospf
+router ospf {{host['ospf']["ospf_process"]}}
+router-id {{host["ospf"]["ospf_rid"]}}
+interface e1/1-4
+ip router ospf {{host["ospf"]["ospf_process"]}} area {{host["ospf"]["ospf_networks"]["area"]}}

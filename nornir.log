@@ -4372,3 +4372,125 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
 2022-07-14 10:25:06,053 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
 2022-07-14 10:26:21,120 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
 2022-07-14 10:26:59,656 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 13 hosts
+2022-07-14 11:43:07,748 -  nornir.core -     INFO -        run() - Running task 'test_clock' with args {} on 1 hosts
+2022-07-14 11:44:28,900 -  nornir.core -     INFO -        run() - Running task 'test_clock' with args {} on 13 hosts
+2022-07-14 11:45:22,803 -  nornir.core -     INFO -        run() - Running task 'test_clock' with args {} on 13 hosts
+2022-07-14 11:46:32,659 -  nornir.core -     INFO -        run() - Running task 'test_clock' with args {} on 13 hosts
+2022-07-14 11:46:45,554 -  nornir.core -     INFO -        run() - Running task 'test_clock' with args {} on 1 hosts
+2022-07-14 11:48:29,970 -  nornir.core -     INFO -        run() - Running task 'show_version' with args {} on 1 hosts
+2022-07-14 11:53:01,290 -  nornir.core -     INFO -        run() - Running task 'show_version' with args {} on 1 hosts
+2022-07-14 11:54:19,253 -  nornir.core -     INFO -        run() - Running task 'show_version' with args {} on 1 hosts
+2022-07-14 11:55:04,093 -  nornir.core -     INFO -        run() - Running task 'show_version' with args {} on 1 hosts
+2022-07-14 12:06:16,998 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 12:06:18,497 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/029-Check_interface.py", line 14, in show_interface_status
+    int_list = list(task.host["items"]["interfaces"])
+TypeError: list indices must be integers or slices, not str
+
+2022-07-14 12:10:48,334 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 12:11:28,168 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 12:12:20,503 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 12:22:00,496 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 12:22:01,983 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/033-Genie-Checkinterface.py", line 9, in show_interface_status
+    show_ip_result = task.run(task=send_command, command="show interfaceexit")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-14 12:22:30,019 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-14 16:08:53,401 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:08:53,402 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: ospf.j2
+
+2022-07-14 16:08:53,403 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/34-JinjaTemp_ospf.py", line 9, in test_template
+    template = task.run(task=template_file, template="ospf.j2", path="templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-14 16:09:10,676 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:09:10,677 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: ospf.j2
+
+2022-07-14 16:09:10,677 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/34-JinjaTemp_ospf.py", line 9, in test_template
+    template = task.run(task=template_file, template="ospf.j2", path="templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-14 16:09:56,797 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:09:56,802 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates/ospf.j2", line 5, in top-level template code
+    ip router ospf {{host["ospf"]["ospf_process"]}} area {{host["ospf"]["area"]}}
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'area'
+
+2022-07-14 16:09:56,802 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/34-JinjaTemp_ospf.py", line 9, in test_template
+    template = task.run(task=template_file, template="ospf.j2", path="templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-14 16:10:29,724 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:10:41,154 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:11:10,314 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:11:39,639 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:12:05,031 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-14 16:12:42,511 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts

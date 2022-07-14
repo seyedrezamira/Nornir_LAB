@@ -7,6 +7,13 @@ p0-ss1:
     data:
         loopback0: "172.16.132.0"
         bgp: "4263501000"
+        ospf:
+            ospf_rid: 172.16.132.0
+            ospf_process: "1"
+            ospf_networks:
+                ip: "172.16.108.0"
+                wildcard: "0.0.0.0"
+                area: "0"
 
 # p0-ss2:
 #     hostname: "172.21.2.77"
