@@ -5,3 +5,5 @@ router-id {{host["ospf"]["ospf_rid"]}}
 interface {{int["int"]}}
 ip router ospf {{host["ospf"]["ospf_process"]}} area {{host["ospf"]["ospf_networks"]["area"]}}
 {%endfor%}
+
+

@@ -1,0 +1,5194 @@
+[1m[36mshow_command_test***************************************************************[0m
+[0m[1m[34m* p0-ss1 ** changed : False ****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 10:11:14 2022
+!Time: Mon Jul 18 13:48:20 2022
+
+version 9.3(9) Bios:version
+hostname p0-ss1
+vdc p0-ss1 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature ospf
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$ICNBDN$iKWSC0J.zLHQMJ0AfjXPBKp2FGbjdaBRJDOEAIERO8C  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 481B36C0C542C62A5197040C2E6EC69623E3 priv 483F34939019E965078844516E2F9FCF73C2 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SUPERSPINE_TO_SPINE_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:12 additive
+route-map SUPERSPINE_TO_SPINE_FABRIC_OUT permit 10
+  set community 0:13 additive
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description connected to p1-s1(92QKW05M0NU) via Ethernet1/35
+  no switchport
+  mtu 9050
+  ip address 172.16.108.1/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/2
+  description connected to p1-s2(9R4U52ZKTB5) via Ethernet1/35
+  no switchport
+  mtu 9050
+  ip address 172.16.108.5/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/3
+  no switchport
+  mtu 9050
+  ip address 172.16.108.9/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/4
+  description connected to p1-s4(9UB5G3UCY2C) via Ethernet1/35
+  no switchport
+  mtu 9050
+  ip address 172.16.108.13/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/5
+  no switchport
+  no shutdown
+
+interface Ethernet1/6
+  no switchport
+  no shutdown
+
+interface Ethernet1/7
+  no switchport
+  no shutdown
+
+interface Ethernet1/8
+  no switchport
+  no shutdown
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  description connected to Switch via Ethernet0/0
+  vrf member management
+  ip address 192.168.1.11/24
+
+interface loopback0
+  ip address 172.16.132.0/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router ospf 1
+  router-id 172.16.132.0
+router bgp 4263501000
+  router-id 172.16.132.0
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.0
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.4
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.8
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.12
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p0-ss2 ** changed : False ****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 10:34:30 2022
+!Time: Mon Jul 18 13:48:24 2022
+
+version 9.3(9) Bios:version
+hostname p0-ss2
+vdc p0-ss2 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$CDJJNB$gAVmv/KvcU8yvAgHXgnxVc06xB6xqhavpRrdlpHiQT2  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 204E22C6CAC9B0ED963B32C5FB9674467F5B priv 330805BAFF8691A2D26A67DBE6977B3B1636 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SUPERSPINE_TO_SPINE_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:12 additive
+route-map SUPERSPINE_TO_SPINE_FABRIC_OUT permit 10
+  set community 0:13 additive
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description facing_nf-p1-s1:Ethernet1/36
+  no switchport
+  mtu 9050
+  ip address 172.16.108.3/31
+  no shutdown
+
+interface Ethernet1/2
+  description facing_nf-p1-s2:Ethernet1/36
+  no switchport
+  mtu 9050
+  ip address 172.16.108.7/31
+  no shutdown
+
+interface Ethernet1/3
+  description facing_nf-p1-s3:Ethernet1/36
+  no switchport
+  mtu 9050
+  ip address 172.16.108.11/31
+  no shutdown
+
+interface Ethernet1/4
+  description facing_nf-p1-s4:Ethernet1/36
+  no switchport
+  mtu 9050
+  ip address 172.16.108.15/31
+  no shutdown
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.12/24
+
+interface loopback0
+  ip address 172.16.132.1/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501000
+  router-id 172.16.132.1
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.2
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.6
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.10
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.14
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-bg ** changed : False *****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 11:01:49 2022
+!Time: Mon Jul 18 13:48:24 2022
+
+version 9.3(9) Bios:version
+hostname p1-bg
+vdc p1-bg id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$GJPEFK$h7jDc8d0H6fPPOtI0eqFMZEu901EKZcc/p2xkBsrEE0  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 366F617583C372254A24E42E29F48F2822E9 priv 365F7474DFCF7D304301F36B26E2AB737EEB localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,3800-3803
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Vlan1
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+  description facing_nf-p1-s1:Ethernet1/28
+  no switchport
+  mtu 9050
+  ip address 172.16.108.25/31
+  no shutdown
+
+interface Ethernet1/50
+  description facing_nf-p1-s2:Ethernet1/28
+  no switchport
+  mtu 9050
+  ip address 172.16.108.27/31
+  no shutdown
+
+interface Ethernet1/51
+  description facing_nf-p1-s3:Ethernet1/28
+  no switchport
+  mtu 9050
+  ip address 172.16.108.29/31
+  no shutdown
+
+interface Ethernet1/52
+  description facing_nf-p1-s4:Ethernet1/28
+  no switchport
+  mtu 9050
+  ip address 172.16.108.31/31
+  no shutdown
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.115/24
+
+interface loopback0
+  ip address 172.16.132.7/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.13/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.34/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.20/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.27/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501003
+  router-id 172.16.132.7
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.24
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.26
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.28
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.30
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-bl1a ** changed : False ***************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!No configuration change since last restart
+!Time: Mon Jul 18 13:48:23 2022
+
+version 9.3(9) Bios:version
+hostname p1-bl1a
+vdc p1-bl1a id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+cfs eth distribute
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature vpc
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$MKFMFH$bryN5SyfmLGW8CbweltCMqI5mTRG70QaCW2/9HhN/Y4  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 204F325A155183902333752A3EBCC1B49C3E priv 323911397261D8DC7A7A163562ACDEBAD053 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,2999,3800-3803
+vlan 2999
+  name MCLAG
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 2999,3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+route-map MlagPeer permit 10
+  set as-path prepend 4263501002 4263501002 4263501002
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+port-channel load-balance invalid mac
+hardware forwarding interface statistics mode invalid
+hardware forwarding interface statistics mode default module 1
+hardware profile buffer info port-threshold threshold 0
+hardware profile buffer info port-threshold module 1 threshold 90
+vpc domain 1
+  peer-switch
+  peer-keepalive destination 172.16.132.8 source 172.16.132.6 vrf default
+  delay restore 29
+  dual-active exclude interface-vlan 2999
+  peer-gateway
+  auto-recovery
+  ip arp synchronize
+
+
+interface Vlan1
+  no ip redirects
+  no ipv6 redirects
+
+interface Vlan2999
+  description MCLAG
+  no shutdown
+  mtu 9050
+  no ip redirects
+  ip address 172.16.108.74/31
+  no ipv6 redirects
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface port-channel1
+  description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+  description facing_nf-p1-s1:Ethernet1/1
+  no switchport
+  mtu 9050
+  ip address 172.16.108.39/31
+  no shutdown
+
+interface Ethernet1/32
+  description facing_nf-p1-s2:Ethernet1/1
+  no switchport
+  mtu 9050
+  ip address 172.16.108.17/31
+  no shutdown
+
+interface Ethernet1/33
+  description facing_nf-p1-s3:Ethernet1/1
+  no switchport
+  mtu 9050
+  ip address 172.16.108.21/31
+  no shutdown
+
+interface Ethernet1/34
+  description facing_nf-p1-s4:Ethernet1/1
+  no switchport
+  mtu 9050
+  ip address 172.16.108.19/31
+  no shutdown
+
+interface Ethernet1/35
+  description facing_nf-p1-bl1b:Ethernet1/35
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/36
+  description facing_nf-p1-bl1b:Ethernet1/36
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.17/24
+
+interface loopback0
+  ip address 172.16.132.6/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.14/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.35/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.21/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.28/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501002
+  router-id 172.16.132.6
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-mlag-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.16
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.18
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.20
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.38
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.75
+    inherit peer-session l3clos-nobfd
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-mlag-policy 1
+      route-map MlagPeer out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-bl1b ** changed : False ***************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!No configuration change since last restart
+!Time: Mon Jul 18 13:48:20 2022
+
+version 9.3(9) Bios:version
+hostname p2-bl1b
+vdc p2-bl1b id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+cfs eth distribute
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature vpc
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$IAGMLC$JdTzkqWvKrVsiY.LJvn/hmmXITv0kyWICCrvAiRCVU2  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 174D930E71B606A9FA8D75125DF111629DDC priv 482BC27C52E102B5F7C1506B0DA8722F8080 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,2999,3800-3803
+vlan 2999
+  name MCLAG
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 2999,3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+route-map MlagPeer permit 10
+  set as-path prepend 4263501004 4263501004 4263501004
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+vpc domain 1
+  peer-switch
+  peer-keepalive destination 172.16.132.6 source 172.16.132.8 vrf default
+  delay restore 29
+  dual-active exclude interface-vlan 2999
+  peer-gateway
+  auto-recovery
+  ip arp synchronize
+
+
+interface Vlan1
+  no ip redirects
+  no ipv6 redirects
+
+interface Vlan2999
+  description MCLAG
+  no shutdown
+  mtu 9050
+  no ip redirects
+  ip address 172.16.108.75/31
+  no ipv6 redirects
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface port-channel1
+  description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+  description facing_nf-p1-s1:Ethernet1/2
+  no switchport
+  mtu 9050
+  ip address 172.16.108.23/31
+  no shutdown
+
+interface Ethernet1/32
+  description facing_nf-p1-s2:Ethernet1/2
+  no switchport
+  mtu 9050
+  ip address 172.16.108.33/31
+  no shutdown
+
+interface Ethernet1/33
+  description facing_nf-p1-s3:Ethernet1/2
+  no switchport
+  mtu 9050
+  ip address 172.16.108.35/31
+  no shutdown
+
+interface Ethernet1/34
+  description facing_nf-p1-s4:Ethernet1/2
+  no switchport
+  mtu 9050
+  ip address 172.16.108.37/31
+  no shutdown
+
+interface Ethernet1/35
+  description facing_nf-p1-bl1a:Ethernet1/35
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/36
+  description facing_nf-p1-bl1a:Ethernet1/36
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.18/24
+
+interface loopback0
+  ip address 172.16.132.8/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.15/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.36/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.22/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.29/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501004
+  router-id 172.16.132.8
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-mlag-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.22
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.32
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.34
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.36
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.74
+    inherit peer-session l3clos-nobfd
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-mlag-policy 1
+      route-map MlagPeer out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-l1-x ** changed : False ***************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!No configuration change since last restart
+!Time: Mon Jul 18 13:48:24 2022
+
+version 9.3(9) Bios:version
+hostname p1-l1-x
+vdc p1-l1-x id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$MNBABP$sHxSzMOgL1FVtXZ1e3Af0SRqneXapyXexNnOG.4JdB2  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 043EFAC3CC22D92E0AF1D9E2ED66A823BC6A priv 042AFDC1E928B14830DDFEE6F87BA726C018 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,3800-3803
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Vlan1
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+  description facing_nf-p1-s1:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.41/31
+  no shutdown
+
+interface Ethernet1/50
+  description facing_nf-p1-s2:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.45/31
+  no shutdown
+
+interface Ethernet1/51
+  description facing_nf-p1-s3:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.43/31
+  no shutdown
+
+interface Ethernet1/52
+  description facing_nf-p1-s4:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.47/31
+  no shutdown
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.113/24
+
+interface loopback0
+  ip address 172.16.132.9/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.17/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.38/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.24/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.31/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501005
+  router-id 172.16.132.9
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.40
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.42
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.44
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.46
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-l1-xx ** changed : False **************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!No configuration change since last restart
+!Time: Mon Jul 18 13:48:24 2022
+
+version 9.3(9) Bios:version
+hostname p1-l1-x
+vdc p1-l1-x id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$MNBABP$sHxSzMOgL1FVtXZ1e3Af0SRqneXapyXexNnOG.4JdB2  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 043EFAC3CC22D92E0AF1D9E2ED66A823BC6A priv 042AFDC1E928B14830DDFEE6F87BA726C018 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,3800-3803
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Vlan1
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+  description facing_nf-p1-s1:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.41/31
+  no shutdown
+
+interface Ethernet1/50
+  description facing_nf-p1-s2:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.45/31
+  no shutdown
+
+interface Ethernet1/51
+  description facing_nf-p1-s3:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.43/31
+  no shutdown
+
+interface Ethernet1/52
+  description facing_nf-p1-s4:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.47/31
+  no shutdown
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.113/24
+
+interface loopback0
+  ip address 172.16.132.9/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.17/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.38/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.24/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.31/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501005
+  router-id 172.16.132.9
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.40
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.42
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.44
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.46
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-l1a ** changed : False ****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 10:58:22 2022
+!Time: Mon Jul 18 13:48:23 2022
+
+version 9.3(9) Bios:version
+hostname p1-l1a
+vdc p1-l1a id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+cfs eth distribute
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature vpc
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$AIDCMG$C8/53KAjKU4YRoFWP.vJyLz.MntN/Lth8sarSwc61N/  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 1769B0BE6AA767424A9069B8D6126CC4035D priv 0055AA9312AE0C2A7F8E68EDDD0C45CD2C2C localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,2999,3800-3803
+vlan 2999
+  name MCLAG
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 2999,3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+route-map MlagPeer permit 10
+  set as-path prepend 4263501007 4263501007 4263501007
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+vpc domain 1
+  peer-switch
+  peer-keepalive destination 172.16.132.12 source 172.16.132.11 vrf default
+  delay restore 29
+  dual-active exclude interface-vlan 2999
+  peer-gateway
+  auto-recovery
+  ip arp synchronize
+
+
+interface Vlan1
+  no ip redirects
+  no ipv6 redirects
+
+interface Vlan2999
+  description MCLAG
+  no shutdown
+  mtu 9050
+  no ip redirects
+  ip address 172.16.108.72/31
+  no ipv6 redirects
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface port-channel1
+  description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+  description facing_nf-p1-s1:Ethernet1/5
+  no switchport
+  mtu 9050
+  ip address 172.16.108.61/31
+  no shutdown
+
+interface Ethernet1/50
+  description facing_nf-p1-s2:Ethernet1/5
+  no switchport
+  mtu 9050
+  ip address 172.16.108.67/31
+  no shutdown
+
+interface Ethernet1/51
+  description facing_nf-p1-s3:Ethernet1/5
+  no switchport
+  mtu 9050
+  ip address 172.16.108.69/31
+  no shutdown
+
+interface Ethernet1/52
+  description facing_nf-p1-s4:Ethernet1/5
+  no switchport
+  mtu 9050
+  ip address 172.16.108.63/31
+  no shutdown
+
+interface Ethernet1/53
+  description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb:Ethernet1/53
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/54
+  description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb:Ethernet1/54
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.111/24
+
+interface loopback0
+  ip address 172.16.132.11/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.18/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.39/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.25/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.32/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501007
+  router-id 172.16.132.11
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-mlag-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.60
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.62
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.66
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.68
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.73
+    inherit peer-session l3clos-nobfd
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-mlag-policy 1
+      route-map MlagPeer out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-l1b ** changed : False ****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 12:43:56 2022
+!Time: Mon Jul 18 13:48:23 2022
+
+version 9.3(9) Bios:version
+hostname p1-l1b
+vdc p1-l1b id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+cfs eth distribute
+nv overlay evpn
+feature bgp
+feature interface-vlan
+feature lacp
+feature dhcp
+feature vpc
+feature lldp
+feature bfd
+feature evmed
+feature nv overlay
+
+no password strength-check
+username admin password 5 $5$BCJNBH$cbvM.tv20MqdomJcgWpwwUg.iOV8zKuY3ORPx5Qheb2  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 481B42A90BF22EDB0AAD0CA8726A50C2A578 priv 532024CE2BC54AA86DC937C3EBFAEE118B11 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 001c.7300.0001
+vlan 1,2999,3800-3803
+vlan 2999
+  name MCLAG
+vlan 3800
+  name VRF_fh-vcs-fe-test
+vlan 3801
+  name VRF_fh-vcs-fi-test
+vlan 3802
+  name VRF_fh-vcs-fe-live
+vlan 3803
+  name VRF_fh-vcs-fi-live
+
+spanning-tree vlan 2999,3800-3803 priority 8192
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SPINE_EVPN_TIER seq 5 permit "0:14"
+ip community-list expanded FROM_SPINE_FABRIC_TIER seq 5 permit "0:15"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map LEAF_TO_SPINE_EVPN_OUT deny 10
+  match community FROM_SPINE_EVPN_TIER
+route-map LEAF_TO_SPINE_EVPN_OUT permit 20
+route-map LEAF_TO_SPINE_FABRIC_OUT deny 10
+  match community FROM_SPINE_FABRIC_TIER
+route-map LEAF_TO_SPINE_FABRIC_OUT permit 20
+route-map MlagPeer permit 10
+  set as-path prepend 4263501008 4263501008 4263501008
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
+vrf context fh-vcs-fe-live
+  vni 1860002
+vrf context fh-vcs-fe-test
+  vni 1860000
+vrf context fh-vcs-fi-live
+  vni 1860003
+vrf context fh-vcs-fi-test
+  vni 1860001
+vrf context management
+  ip route 0.0.0.0/0 mgmt0 192.168.1.254
+system vrf-member-change retain-l3-config
+vpc domain 1
+  peer-switch
+  peer-keepalive destination 172.16.132.11 source 172.16.132.12 vrf default
+  delay restore 29
+  dual-active exclude interface-vlan 2999
+  peer-gateway
+  auto-recovery
+  ip arp synchronize
+
+
+interface Vlan1
+  no ip redirects
+  no ipv6 redirects
+
+interface Vlan2999
+  description MCLAG
+  no shutdown
+  mtu 9050
+  no ip redirects
+  ip address 172.16.108.73/31
+  no ipv6 redirects
+
+interface Vlan3800
+  description L3 Transit VNI for VRF fh-vcs-fe-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3801
+  description L3 Transit VNI for VRF fh-vcs-fi-test
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-test
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3802
+  description L3 Transit VNI for VRF fh-vcs-fe-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fe-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan3803
+  description L3 Transit VNI for VRF fh-vcs-fi-live
+  no shutdown
+  mtu 9050
+  vrf member fh-vcs-fi-live
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface port-channel1
+  description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+
+interface Ethernet1/1
+
+interface Ethernet1/2
+
+interface Ethernet1/3
+
+interface Ethernet1/4
+
+interface Ethernet1/5
+
+interface Ethernet1/6
+
+interface Ethernet1/7
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+
+interface Ethernet1/36
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+  description facing_nf-p1-s1:Ethernet1/6
+  no switchport
+  mtu 9050
+  ip address 172.16.108.71/31
+  no shutdown
+
+interface Ethernet1/50
+  description facing_nf-p1-s2:Ethernet1/6
+  no switchport
+  mtu 9050
+  ip address 172.16.108.59/31
+  no shutdown
+
+interface Ethernet1/51
+  description facing_nf-p1-s3:Ethernet1/6
+  no switchport
+  mtu 9050
+  ip address 172.16.108.57/31
+  no shutdown
+
+interface Ethernet1/52
+  description facing_nf-p1-s4:Ethernet1/6
+  no switchport
+  mtu 9050
+  ip address 172.16.108.65/31
+  no shutdown
+
+interface Ethernet1/53
+  description facing_nf-p1-l1a:Ethernet1/53
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/54
+  description facing_nf-p1-l1a:Ethernet1/54
+  switchport mode trunk
+  channel-group 1 mode active
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.112/24
+
+interface loopback0
+  ip address 172.16.132.12/32
+
+interface loopback2
+  description Loopback for VRF fh-vcs-fe-test
+  vrf member fh-vcs-fe-test
+  ip address 172.16.132.19/32
+
+interface loopback3
+  description Loopback for VRF fh-vcs-fi-test
+  vrf member fh-vcs-fi-test
+  ip address 172.16.132.40/32
+
+interface loopback4
+  description Loopback for VRF fh-vcs-fe-live
+  vrf member fh-vcs-fe-live
+  ip address 172.16.132.26/32
+
+interface loopback5
+  description Loopback for VRF fh-vcs-fi-live
+  vrf member fh-vcs-fi-live
+  ip address 172.16.132.33/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501008
+  router-id 172.16.132.12
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  template peer-policy l3clos-l
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-l-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-mlag-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-l-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  neighbor 172.16.108.56
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.58
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.64
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.70
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-l 1
+      route-map LEAF_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.72
+    inherit peer-session l3clos-nobfd
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-mlag-policy 1
+      route-map MlagPeer out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-l-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-l-evpn-policy 1
+      allowas-in 1
+      route-map LEAF_TO_SPINE_EVPN_OUT out
+  vrf fh-vcs-fe-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fe-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-live
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks
+  vrf fh-vcs-fi-test
+    log-neighbor-changes
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map AllPodNetworks[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-s1 ** changed : False *****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!No configuration change since last restart
+!Time: Mon Jul 18 13:48:20 2022
+
+version 9.3(9) Bios:version
+hostname p1-s1
+vdc p1-s1 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$LMNCBI$9vm7HntABqkkoIyhGBo.hxVRk6FjyQ/EXbNh7zABRYB  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 0146B0101F3A6F691E4625B22677591E6880 priv 3747C0616507070D5A6D0D8550E08DCDACB0 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SUPERSPINE_EVPN_TIER seq 5 permit "0:12"
+ip community-list expanded FROM_SUPERSPINE_FABRIC_TIER seq 5 permit "0:13"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SPINE_TO_LEAF_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:14 additive
+route-map SPINE_TO_LEAF_FABRIC_OUT permit 10
+  set community 0:15 additive
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT deny 10
+  match community FROM_SUPERSPINE_EVPN_TIER
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT permit 20
+  set ip next-hop unchanged
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT deny 10
+  match community FROM_SUPERSPINE_FABRIC_TIER
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT permit 20
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description facing_nf-p1-bl1a:Ethernet1/31
+  no switchport
+  mtu 9050
+  ip address 172.16.108.38/31
+  no shutdown
+
+interface Ethernet1/2
+  description facing_nf-p1-bl1b:Ethernet1/31
+  no switchport
+  mtu 9050
+  ip address 172.16.108.22/31
+  no shutdown
+
+interface Ethernet1/3
+  description facing_nf-p1-l1:Ethernet1/49
+  no switchport
+  mtu 9050
+  ip address 172.16.108.48/31
+  no shutdown
+
+interface Ethernet1/4
+  description facing_nf-p1-l1:Ethernet1/49
+  no switchport
+  mtu 9050
+  ip address 172.16.108.40/31
+  no shutdown
+
+interface Ethernet1/5
+  description facing_nf-p1-l1a:Ethernet1/49
+  no switchport
+  mtu 9050
+  ip address 172.16.108.60/31
+  no shutdown
+
+interface Ethernet1/6
+  description facing_nf-p1-l1b:Ethernet1/49
+  no switchport
+  mtu 9050
+  ip address 172.16.108.70/31
+  no shutdown
+
+interface Ethernet1/7
+  no switchport
+  no shutdown
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+  description facing_nf-p1-bg1:Ethernet1/49
+  no switchport
+  mtu 9050
+  ip address 172.16.108.24/31
+  no shutdown
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+  description facing_nf-pl0-ss1:Ethernet1/1
+  no switchport
+  mtu 9050
+  ip address 172.16.108.0/31
+  no shutdown
+
+interface Ethernet1/36
+  description facing_nf-pl0-ss2:Ethernet1/1
+  no switchport
+  mtu 9050
+  ip address 172.16.108.2/31
+  no shutdown
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.13/24
+
+interface loopback0
+  ip address 172.16.132.2/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501001
+  router-id 172.16.132.2
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.1
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.3
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.23
+    inherit peer-session l3clos
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.25
+    inherit peer-session l3clos
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.39
+    inherit peer-session l3clos
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.41
+    inherit peer-session l3clos
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.49
+    inherit peer-session l3clos
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.61
+    inherit peer-session l3clos
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.71
+    inherit peer-session l3clos
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.132.0
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.1
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.6
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.7
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.8
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.9
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.10
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.11
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.12
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-s2 ** changed : False *****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 10:42:34 2022
+!Time: Mon Jul 18 13:48:23 2022
+
+version 9.3(9) Bios:version
+hostname p1-s2
+vdc p1-s2 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$KAEIDI$XY67mOHn1lalmwf0PGguZc4Tz6UrUy3NhQTfA0JidGC  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 204A892C5B1BF745B1BCD2AA91A1F3E5353F priv 165FE5025558FE2381B8B0D785B9A4B92074 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SUPERSPINE_EVPN_TIER seq 5 permit "0:12"
+ip community-list expanded FROM_SUPERSPINE_FABRIC_TIER seq 5 permit "0:13"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SPINE_TO_LEAF_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:14 additive
+route-map SPINE_TO_LEAF_FABRIC_OUT permit 10
+  set community 0:15 additive
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT deny 10
+  match community FROM_SUPERSPINE_EVPN_TIER
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT permit 20
+  set ip next-hop unchanged
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT deny 10
+  match community FROM_SUPERSPINE_FABRIC_TIER
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT permit 20
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description facing_nf-p1-bl1a:Ethernet1/32
+  no switchport
+  mtu 9050
+  ip address 172.16.108.16/31
+  no shutdown
+
+interface Ethernet1/2
+  description facing_nf-p1-bl1b:Ethernet1/32
+  no switchport
+  mtu 9050
+  ip address 172.16.108.32/31
+  no shutdown
+
+interface Ethernet1/3
+  description facing_nf-p1-l1:Ethernet1/50
+  no switchport
+  mtu 9050
+  ip address 172.16.108.52/31
+  no shutdown
+
+interface Ethernet1/4
+  description facing_nf-p1-l1:Ethernet1/50
+  no switchport
+  mtu 9050
+  ip address 172.16.108.44/31
+  no shutdown
+
+interface Ethernet1/5
+  description facing_nf-p1-l1a:Ethernet1/50
+  no switchport
+  mtu 9050
+  ip address 172.16.108.66/31
+  no shutdown
+
+interface Ethernet1/6
+  description facing_nf-p1-l1b:Ethernet1/50
+  no switchport
+  mtu 9050
+  ip address 172.16.108.58/31
+  no shutdown
+
+interface Ethernet1/7
+  no switchport
+  no shutdown
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+  description facing_nf-p1-bg1:Ethernet1/50
+  no switchport
+  mtu 9050
+  ip address 172.16.108.26/31
+  no shutdown
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+  description facing_nf-pl0-ss1:Ethernet1/2
+  no switchport
+  mtu 9050
+  ip address 172.16.108.4/31
+  no shutdown
+
+interface Ethernet1/36
+  description facing_nf-pl0-ss2:Ethernet1/2
+  no switchport
+  mtu 9050
+  ip address 172.16.108.6/31
+  no shutdown
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.14/24
+
+interface loopback0
+  ip address 172.16.132.3/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501001
+  router-id 172.16.132.3
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.5
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.7
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.17
+    inherit peer-session l3clos
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.27
+    inherit peer-session l3clos
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.33
+    inherit peer-session l3clos
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.45
+    inherit peer-session l3clos
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.53
+    inherit peer-session l3clos
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.59
+    inherit peer-session l3clos
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.67
+    inherit peer-session l3clos
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.132.0
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.1
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.6
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.7
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.8
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.9
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.10
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.11
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.12
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-s3 ** changed : False *****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!Running configuration last done at: Mon Jul 18 10:43:20 2022
+!Time: Mon Jul 18 13:48:21 2022
+
+version 9.3(9) Bios:version
+hostname p1-s3
+vdc p1-s3 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$FBMHLB$lw0JkW9edNfRHLAI9LTkXnyryepBMselHvNo35iDfh0  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 3746787DA61CA11D3DC9DA84D9888ADD181C priv 01674E539A259D340E8583D19186C5C84F17 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SUPERSPINE_EVPN_TIER seq 5 permit "0:12"
+ip community-list expanded FROM_SUPERSPINE_FABRIC_TIER seq 5 permit "0:13"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SPINE_TO_LEAF_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:14 additive
+route-map SPINE_TO_LEAF_FABRIC_OUT permit 10
+  set community 0:15 additive
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT deny 10
+  match community FROM_SUPERSPINE_EVPN_TIER
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT permit 20
+  set ip next-hop unchanged
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT deny 10
+  match community FROM_SUPERSPINE_FABRIC_TIER
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT permit 20
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description facing_nf-p1-bl1a:Ethernet1/33
+  no switchport
+  mtu 9050
+  ip address 172.16.108.20/31
+  no shutdown
+
+interface Ethernet1/2
+  description facing_nf-p1-bl1b:Ethernet1/33
+  no switchport
+  mtu 9050
+  ip address 172.16.108.34/31
+  no shutdown
+
+interface Ethernet1/3
+  description facing_nf-p1-l1:Ethernet1/51
+  no switchport
+  mtu 9050
+  ip address 172.16.108.54/31
+  no shutdown
+
+interface Ethernet1/4
+  description facing_nf-p1-l1:Ethernet1/51
+  no switchport
+  mtu 9050
+  ip address 172.16.108.42/31
+  no shutdown
+
+interface Ethernet1/5
+  description facing_nf-p1-l1a:Ethernet1/51
+  no switchport
+  mtu 9050
+  ip address 172.16.108.68/31
+  no shutdown
+
+interface Ethernet1/6
+  description facing_nf-p1-l1b:Ethernet1/51
+  no switchport
+  mtu 9050
+  ip address 172.16.108.56/31
+  no shutdown
+
+interface Ethernet1/7
+  no switchport
+  no shutdown
+
+interface Ethernet1/8
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+  description facing_nf-p1-bg1:Ethernet1/51
+  no switchport
+  mtu 9050
+  ip address 172.16.108.28/31
+  no shutdown
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+  description facing_nf-pl0-ss1:Ethernet1/3
+  no switchport
+  mtu 9050
+  ip address 172.16.108.8/31
+  no shutdown
+
+interface Ethernet1/36
+  description facing_nf-pl0-ss2:Ethernet1/3
+  no switchport
+  mtu 9050
+  ip address 172.16.108.10/31
+  no shutdown
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.15/24
+
+interface loopback0
+  ip address 172.16.132.4/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501001
+  router-id 172.16.132.4
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.9
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.11
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.21
+    inherit peer-session l3clos
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.29
+    inherit peer-session l3clos
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.35
+    inherit peer-session l3clos
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.43
+    inherit peer-session l3clos
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.55
+    inherit peer-session l3clos
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.57
+    inherit peer-session l3clos
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.69
+    inherit peer-session l3clos
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.132.0
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.1
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.6
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.7
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.8
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.9
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.10
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.11
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.12
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m[1m[34m* p1-s4 ** changed : False *****************************************************[0m
+[0m[1m[32mvvvv show_command_test ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0m!Command: show running-config
+!No configuration change since last restart
+!Time: Mon Jul 18 13:48:19 2022
+
+version 9.3(9) Bios:version
+hostname p1-s4
+vdc p1-s4 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$FIINAE$8YgKFRr.jecm0T3QVuaH3EFdkkD.XbOvMO9iKiQJi/3  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 17583CDBB67EADB6AF6BEE06014C75E52EC7 priv 164F6DF2BC61FCAEF5298266081C25AD2389 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+vlan 1
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+ip community-list expanded FROM_SUPERSPINE_EVPN_TIER seq 5 permit "0:12"
+ip community-list expanded FROM_SUPERSPINE_FABRIC_TIER seq 5 permit "0:13"
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SPINE_TO_LEAF_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:14 additive
+route-map SPINE_TO_LEAF_FABRIC_OUT permit 10
+  set community 0:15 additive
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT deny 10
+  match community FROM_SUPERSPINE_EVPN_TIER
+route-map SPINE_TO_SUPERSPINE_EVPN_OUT permit 20
+  set ip next-hop unchanged
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT deny 10
+  match community FROM_SUPERSPINE_FABRIC_TIER
+route-map SPINE_TO_SUPERSPINE_FABRIC_OUT permit 20
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description facing_nf-p1-bl1a:Ethernet1/34
+  no switchport
+  mtu 9050
+  ip address 172.16.108.18/31
+  no shutdown
+
+interface Ethernet1/2
+  description facing_nf-p1-bl1b:Ethernet1/34
+  no switchport
+  mtu 9050
+  ip address 172.16.108.36/31
+  no shutdown
+
+interface Ethernet1/3
+  description facing_nf-p1-l1:Ethernet1/52
+  no switchport
+  mtu 9050
+  ip address 172.16.108.50/31
+  no shutdown
+
+interface Ethernet1/4
+  description facing_nf-p1-l1:Ethernet1/52
+  no switchport
+  mtu 9050
+  ip address 172.16.108.46/31
+  no shutdown
+
+interface Ethernet1/5
+  description facing_nf-p1-l1a:Ethernet1/52
+  no switchport
+  mtu 9050
+  ip address 172.16.108.62/31
+  no shutdown
+
+interface Ethernet1/6
+  description facing_nf-p1-l1b:Ethernet1/52
+  no switchport
+  mtu 9050
+  ip address 172.16.108.64/31
+  no shutdown
+
+interface Ethernet1/7
+  no switchport
+  no shutdown
+
+interface Ethernet1/8
+  no switchport
+  no shutdown
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+
+interface Ethernet1/15
+
+interface Ethernet1/16
+
+interface Ethernet1/17
+
+interface Ethernet1/18
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+
+interface Ethernet1/25
+
+interface Ethernet1/26
+
+interface Ethernet1/27
+
+interface Ethernet1/28
+  description facing_nf-p1-bg1:Ethernet1/52
+  no switchport
+  mtu 9050
+  ip address 172.16.108.30/31
+  no shutdown
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+
+interface Ethernet1/35
+  description facing_nf-pl0:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.12/31
+  no shutdown
+
+interface Ethernet1/36
+  description facing_nf-pl0:Ethernet1/4
+  no switchport
+  mtu 9050
+  ip address 172.16.108.14/31
+  no shutdown
+
+interface Ethernet1/37
+
+interface Ethernet1/38
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  vrf member management
+  ip address 192.168.1.16/24
+
+interface loopback0
+  ip address 172.16.132.5/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router bgp 4263501001
+  router-id 172.16.132.5
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.13
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.15
+    inherit peer-session l3clos
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_SUPERSPINE_FABRIC_OUT out
+  neighbor 172.16.108.19
+    inherit peer-session l3clos
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.31
+    inherit peer-session l3clos
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.37
+    inherit peer-session l3clos
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.47
+    inherit peer-session l3clos
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.51
+    inherit peer-session l3clos
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.63
+    inherit peer-session l3clos
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.108.65
+    inherit peer-session l3clos
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SPINE_TO_LEAF_FABRIC_OUT out
+  neighbor 172.16.132.0
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss1-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.1
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501000
+    description facing_nf-pl0-ss2-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_SUPERSPINE_EVPN_OUT out
+  neighbor 172.16.132.6
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501002
+    description facing_nf-p1-bl1a-xx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.7
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501003
+    description facing_nf-p1-bg1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.8
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501004
+    description facing_nf-p1-bl1b-xx-sr002-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.9
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501005
+    description facing_nf-p1-l1-xxy-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.10
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501006
+    description facing_nf-p1-l1-xxx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.11
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501007
+    description facing_nf-p1-l1a-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out
+  neighbor 172.16.132.12
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501008
+    description facing_nf-p1-l1b-xyx-sr001-ce6-wtr-gb-evpn-overla
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SPINE_TO_LEAF_EVPN_OUT out[0m
+[0m[1m[32m^^^^ END show_command_test ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m

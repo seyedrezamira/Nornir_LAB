@@ -8,7 +8,7 @@ from nornir_utils.plugins.functions import print_result
 nr = InitNornir(config_file="config.yaml")
 
 def show_command_test(task):
-    task.run(task=send_command, command="show ip ospf nei")
+    task.run(task=send_command, command="show run int mgmt0")
 
 results = nr.run(task=show_command_test)
 print_result(results)

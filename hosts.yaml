@@ -19,7 +19,8 @@ p0-ss1:
             - int: "e1/2"
             - int: "e1/3"
             - int: "e1/4"
-
+        snmp:
+            snmp_community: "IONOS1and1"
 # p0-ss2:
 #     hostname: "172.21.2.77"
 #     port: 2222

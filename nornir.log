@@ -4621,3 +4621,2073 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: send_configs (failed)
 2022-07-14 17:01:38,729 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
 2022-07-14 17:07:45,707 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
 2022-07-14 17:08:03,471 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-15 11:44:44,974 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 1 hosts
+2022-07-15 11:45:37,139 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 1 hosts
+2022-07-15 11:45:54,259 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 1 hosts
+2022-07-15 11:46:29,950 -  nornir.core -     INFO -        run() - Running task 'find_ip' with args {} on 1 hosts
+2022-07-15 16:03:44,527 -  nornir.core -     INFO -        run() - Running task 'send_config_test' with args {} on 1 hosts
+2022-07-18 15:07:07,747 -  nornir.core -     INFO -        run() - Running task 'send_config_test' with args {} on 1 hosts
+2022-07-18 15:13:03,141 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 1 hosts
+2022-07-18 15:48:41,019 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 13 hosts
+2022-07-18 15:56:21,628 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 13 hosts
+2022-07-18 17:16:44,093 -  nornir.core -     INFO -        run() - Running task 'show_command_test' with args {} on 13 hosts
+2022-07-18 17:16:59,220 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-18 17:16:59,220 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_command_test' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/004-Scrapli-Send_command.py", line 11, in show_command_test
+    task.run(task=send_command, command="show run int mgmt0")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-19 14:33:16,697 -  nornir.core -     INFO -        run() - Running task 'testplatform' with args {} on 13 hosts
+2022-07-19 15:09:48,825 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 13 hosts
+2022-07-19 15:10:53,878 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 13 hosts
+2022-07-19 15:10:53,880 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,881 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,881 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,881 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,881 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,882 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,882 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,882 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,882 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,882 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,882 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,883 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,884 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,884 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,884 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,884 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:10:53,884 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,885 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,885 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:10:53,885 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,239 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 13 hosts
+2022-07-19 15:11:35,241 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,242 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,242 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,242 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,242 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,243 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,243 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,244 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,245 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 42, in template_file
+    t = env.get_template(template)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/loaders.py", line 218, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: snmp.j2
+
+2022-07-19 15:11:35,246 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,246 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,246 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:11:35,246 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,008 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 13 hosts
+2022-07-19 15:12:17,014 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,015 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:12:17,015 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,015 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,016 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,017 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,017 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,017 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,018 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,018 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,019 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,019 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:12:17,019 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,020 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,020 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,020 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,021 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,021 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,021 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,022 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:12:17,022 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,022 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,022 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,022 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,022 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:12:17,023 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,334 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 13 hosts
+2022-07-19 15:46:46,337 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:46:46,338 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:46:46,338 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,340 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,340 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,340 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,341 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,341 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,342 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,342 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,343 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,343 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,344 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,344 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,344 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,345 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,346 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,346 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,346 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,346 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,347 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:46:46,347 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,347 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,347 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,348 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:46:46,348 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,975 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 13 hosts
+2022-07-19 15:50:13,978 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:50:13,979 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:50:13,979 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,979 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,980 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,981 - nornir.core.task -    ERROR -      start() - Host 'p1-s1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,982 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,983 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,983 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,983 - nornir.core.task -    ERROR -      start() - Host 'p1-s4': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,984 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,984 - nornir.core.task -    ERROR -      start() - Host 'p1-s2': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,985 - nornir.core.task -    ERROR -      start() - Host 'p1-s3': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,985 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,985 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,986 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,986 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,987 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,987 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-bl1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-x': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-l1-xx': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:50:13,988 - nornir.core.task -    ERROR -      start() - Host 'p1-bg': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:53:01,621 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:53:01,623 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{host.snmp.snmp_community}}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:53:01,623 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:54:19,176 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:54:19,178 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ host.snmp.snmp_community }}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:54:19,178 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:55:05,956 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:55:05,958 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ host.snmp.snmp_community }}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:55:05,958 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:55:35,864 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:55:35,866 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ host.snmp.snmp_community }}
+jinja2.exceptions.UndefinedError: 'list object' has no attribute 'snmp_community'
+
+2022-07-19 15:55:35,866 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:56:02,735 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:56:24,673 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:56:24,675 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ host.snmp.snmp_community }}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:56:24,675 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:56:57,260 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:56:57,262 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ group.snmp.snmp_community }}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'group' is undefined
+
+2022-07-19 15:56:57,263 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:56:59,302 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:56:59,304 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ group.snmp.snmp_community }}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'group' is undefined
+
+2022-07-19 15:56:59,305 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:57:16,905 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:57:16,907 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ groups.snmp.snmp_community }}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'groups' is undefined
+
+2022-07-19 15:57:16,907 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:57:35,347 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:57:35,349 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ groups.snmp.snmp_community }}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'groups' is undefined
+
+2022-07-19 15:57:35,349 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:57:50,194 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-19 15:57:50,196 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-19 15:57:50,197 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'test_template' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/36-JinjaTemp_snmp.py", line 9, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-19 15:58:06,560 -  nornir.core -     INFO -        run() - Running task 'test_template' with args {} on 1 hosts
+2022-07-20 09:49:23,189 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:49:39,870 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:49:52,921 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:51:59,287 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:52:28,062 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:57:07,856 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:57:54,690 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:58:06,709 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 09:58:22,755 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 11:23:30,626 -  nornir.core -     INFO -        run() - Running task 'show_command' with args {} on 1 hosts
+2022-07-20 11:23:36,520 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/001-showver_test-genie.py", line 18, in show_command
+    version = task.host["items"]["platform"]["software"]["system_version"]
+KeyError: 'platform'
+
+2022-07-20 13:06:31,905 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 13:06:33,623 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 14, in show_interface_status
+    interface_per_vlan = task.host["items"][vlan_num]["interfaces"]
+KeyError: '1'
+
+2022-07-20 13:07:38,810 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 13:07:40,421 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 14, in show_interface_status
+    interface_per_vlan = task.host["items"]["vlan_num"]["interfaces"]
+KeyError: 'vlan_num'
+
+2022-07-20 13:08:22,189 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 13:08:23,809 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_interface_status' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 15, in show_interface_status
+    interface_per_vlan = task.host["items"]["vlan_num"]["interfaces"]
+KeyError: 'vlan_num'
+
+2022-07-20 13:09:15,124 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 13:10:20,162 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 13:10:36,423 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts
+2022-07-20 13:12:08,265 -  nornir.core -     INFO -        run() - Running task 'show_interface_status' with args {} on 1 hosts

@@ -5,14 +5,14 @@ from rich import print as rprint
 from pprint import pprint
 
 nr = InitNornir(config_file="config.yaml")
-IP_ADD = "192.168.111.1"
 
 def find_ip(task):
-    version_result = task.run(task=send_command, command="show interface")
+    version_result = task.run(task=send_command, command="show licen usage")
     task.host["facts"] = version_result.scrapli_response.genie_parse_output()
     
 
 results = nr.run(task=find_ip)
+print_result(results)
 
-import ipdb
-ipdb.set_trace()
+# import ipdb
+# ipdb.set_trace()
