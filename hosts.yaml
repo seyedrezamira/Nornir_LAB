@@ -21,6 +21,8 @@ p0-ss1:
             - int: "e1/4"
         snmp:
             snmp_community: "IONOS1and1"
+
+
 # p0-ss2:
 #     hostname: "172.21.2.77"
 #     port: 2222
@@ -102,15 +104,15 @@ p0-ss1:
 #         loopback0: "172.16.132.11"
 #         bgp: "4263501007"
 
-# p1-l1b:
-#     hostname: "172.21.2.77"
-#     port: 22122
-#     groups:
-#         - Pod1
-#         - Nexus
-#     data:
-#         loopback0: "172.16.132.12"
-#         bgp: "4263501008"
+p1-l1b:
+    hostname: "172.21.2.77"
+    port: 22122
+    groups:
+        - Pod1
+        - Nexus
+    data:
+        loopback0: "172.16.132.12"
+        bgp: "4263501008"
 
 # p1-l1-x:
 #     hostname: "172.21.2.77"
