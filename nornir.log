@@ -7215,3 +7215,264 @@ TypeError: unhashable type: 'set'
 2022-07-22 12:37:24,466 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
 2022-07-22 12:37:54,851 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
 2022-07-22 12:38:27,038 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-22 12:58:26,247 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-22 13:14:44,703 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-22 13:19:31,793 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:20:10,089 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:21:39,005 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:22:10,288 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:22:54,175 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:23:16,038 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:25:02,543 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:25:29,862 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:25:43,606 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:29:20,966 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:30:22,905 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:30:44,118 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:30:53,691 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:35:52,115 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 13:36:41,278 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:13:33,735 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:18:23,739 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:18:43,911 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:20:24,238 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:24:10,074 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:24:22,187 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:24:25,668 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:24:50,787 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:25:06,719 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:29:55,577 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:30:07,893 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:30:58,416 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:31:01,266 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 32, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:31:32,229 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:32:04,162 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:32:31,810 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:33:07,808 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:33:24,059 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:34:07,479 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:35:34,657 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:37:19,380 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:37:59,690 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:42:27,045 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:43:31,019 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:44:21,157 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:44:23,815 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 35, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:45:41,195 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:45:43,998 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:46:38,307 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:46:40,969 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 35, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:46:56,541 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:46:59,321 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 35, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:47:20,050 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:47:22,896 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 35, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:47:46,373 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:47:49,065 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:48:21,206 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:48:23,941 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 35, in U230_DCS
+    dic2[int]=[admin_state,oper_state]
+UnboundLocalError: local variable 'admin_state' referenced before assignment
+
+2022-07-22 15:48:44,313 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:49:42,150 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:50:41,991 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:51:10,635 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:51:31,256 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:52:04,907 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:52:38,923 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:55:33,920 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:58:42,762 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:59:12,833 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 15:59:56,676 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:00:14,702 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:01:07,423 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:01:48,619 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:06:24,661 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:06:27,918 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:07:07,631 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:07:44,947 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:07:47,328 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 35, in U230_DCS
+    dic1[vlan_num][int]=dic2
+KeyError: '10'
+
+2022-07-22 16:08:25,115 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:09:47,488 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:10:04,945 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:10:24,918 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:11:12,332 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:12:42,158 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:13:02,199 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:13:03,234 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 287, in channel_authenticate_ssh
+    buf = self.read()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 69, in read
+    buf = self.transport.read()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 99, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 173, in _multiprocessing_timeout
+    future = pool.submit(wrapped_func, *args, **kwargs)
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 181, in submit
+    raise RuntimeError('cannot schedule new futures after '
+RuntimeError: cannot schedule new futures after interpreter shutdown
+
+2022-07-22 16:13:03,235 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 9, in U230_DCS
+    vlan_status = task.run(task=send_command, command="show vlan")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-22 16:13:07,506 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:14:46,579 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:15:26,361 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-22 16:15:51,046 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:22:15,619 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:24:29,523 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:26:27,416 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:29:17,207 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:30:42,558 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:31:22,437 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:32:47,641 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:34:15,087 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:37:58,458 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:38:01,436 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    if task.host["attr"][int]["port_mode"]=="access":
+KeyError: 'Port-channel1'
+
+2022-07-22 16:38:47,987 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:38:51,019 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    if task.host["attr"][int]["port_mode"]=="access":
+KeyError: 'Port-channel1'
+
+2022-07-22 16:39:33,611 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 3 hosts
+2022-07-22 16:39:36,664 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    if task.host["attr"][int]["port_mode"]=="access":
+KeyError: 'Port-channel1'
+
+2022-07-22 16:41:48,823 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:41:51,536 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    if task.host["attr"][int]["port_mode"]=="access":
+KeyError: 'Port-channel1'
+
+2022-07-22 16:42:42,735 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:43:01,202 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:45:14,795 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:46:39,135 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:46:41,772 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    if task.host["attr"][int]["port_mode"]!="trunk":
+KeyError: 'Port-channel1'
+
+2022-07-22 16:47:16,303 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 16:47:19,002 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-Genie_U230-DCS.py", line 36, in U230_DCS
+    if not task.host["attr"][int]["port_mode"]=="trunk":
+KeyError: 'Port-channel1'
+
+2022-07-22 16:48:01,720 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
