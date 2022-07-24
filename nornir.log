@@ -7476,3 +7476,5 @@ Traceback (most recent call last):
 KeyError: 'Port-channel1'
 
 2022-07-22 16:48:01,720 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-22 17:00:22,897 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 1 hosts
+2022-07-22 17:47:37,424 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
