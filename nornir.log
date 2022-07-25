@@ -8765,3 +8765,12 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
 2022-07-25 15:18:17,616 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 2 hosts
 2022-07-25 15:20:33,136 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
 2022-07-25 15:22:58,478 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 2 hosts
+2022-07-25 15:55:11,684 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 15:56:31,285 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 15:57:02,295 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 15:57:17,622 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 15:57:30,425 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 15:57:44,579 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 16:02:05,612 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 16:09:31,993 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-25 16:12:53,978 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts

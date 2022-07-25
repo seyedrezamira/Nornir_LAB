@@ -18,7 +18,7 @@ def U230_DCS(task):
     vlan_list_dic = {}
     
     vlan_list_dic[task.host]=vlan_list
-    rprint(vlan_list_dic)
+    rprint(f"[red]{vlan_list_dic}")
 
     output_dic[task.host]=vlan_num_dic
     for vlan_num in vlan_list:
@@ -38,3 +38,5 @@ def U230_DCS(task):
 
 
 result = nr.run(task=U230_DCS)
+import ipdb
+ipdb.set_trace()
