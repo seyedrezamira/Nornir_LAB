@@ -4,23 +4,6 @@
 #     port: 2221
 #     groups:
 #         - Nexus
-#     data:
-#         loopback0: "172.16.132.0"
-#         bgp: "4263501000"
-#         ospf:
-#             ospf_rid: 172.16.132.0
-#             ospf_process: "1"
-#             ospf_networks:
-#                 ip: "172.16.108.0"
-#                 wildcard: "0.0.0.0"
-#                 area: "0"
-#         interfaces:
-#             - int: "e1/1"
-#             - int: "e1/2"
-#             - int: "e1/3"
-#             - int: "e1/4"
-#         snmp:
-#             snmp_community: "IONOS1and1"
 
 
 # p0-ss2:
@@ -104,15 +87,15 @@
 #         loopback0: "172.16.132.11"
 #         bgp: "4263501007"
 
-p1-l1b:
-    hostname: "172.21.2.77"
-    port: 22122
-    groups:
-        - Pod1
-        - Nexus
-    data:
-        loopback0: "172.16.132.12"
-        bgp: "4263501008"
+# p1-l1b:
+#     hostname: "172.21.2.77"
+#     port: 22122
+#     groups:
+#         - Pod1
+#         - Nexus
+#     data:
+#         loopback0: "172.16.132.12"
+#         bgp: "4263501008"
 
 # p1-l1-x:
 #     hostname: "172.21.2.77"
@@ -143,3 +126,26 @@ p1-l1b:
 #     data:
 #         loopback0: "172.16.132.7"
 #         bgp: "4263501003"
+
+Nxos-1:
+    hostname: "172.21.2.77"
+    port: 22126
+    groups:
+        - Pod1
+        - Nexus
+
+
+Nxos-2:
+    hostname: "172.21.2.77"
+    port: 22127
+    groups:
+        - Pod1
+        - Nexus
+
+
+Nxos-3:
+    hostname: "172.21.2.77"
+    port: 22127
+    groups:
+        - Pod1
+        - Nexus

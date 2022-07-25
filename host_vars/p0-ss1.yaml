@@ -1,0 +1,10 @@
+---
+
+snmp:
+    snmp_community: "IONOS-SE"
+
+ntp:
+    server: "1.2.3.4"
+
+
+

@@ -7478,3 +7478,64 @@ KeyError: 'Port-channel1'
 2022-07-22 16:48:01,720 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
 2022-07-22 17:00:22,897 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 1 hosts
 2022-07-22 17:47:37,424 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 1 hosts
+2022-07-24 19:04:38,067 -  nornir.core -     INFO -        run() - Running task 'load_var' with args {} on 1 hosts
+2022-07-24 19:04:38,069 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'template_file' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/.local/lib/python3.8/site-packages/nornir_jinja2/plugins/tasks/template_file.py", line 43, in template_file
+    text = t.render(host=task.host, **kwargs)
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "cisco_nxos-templates/snmp.j2", line 1, in top-level template code
+    snmp-server community {{ host.snmp.snmp_community}}
+  File "/home/smira/.local/lib/python3.8/site-packages/jinja2/environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'nornir.core.inventory.Host object' has no attribute 'snmp'
+
+2022-07-24 19:04:38,069 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'load_var' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-JinjaTemp_loadvar.py", line 12, in load_var
+    test_template(task)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-JinjaTemp_loadvar.py", line 15, in test_template
+    template = task.run(task=template_file, template="snmp.j2", path=f"{task.host.platform}-templates")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
+
+
+2022-07-24 19:09:21,572 -  nornir.core -     INFO -        run() - Running task 'load_var' with args {} on 1 hosts
+2022-07-24 19:09:21,574 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'load_var' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-JinjaTemp_loadvar.py", line 12, in load_var
+    test_template(task)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-JinjaTemp_loadvar.py", line 19, in test_template
+    task.run(task=configuration, configs=configuration)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 161, in run
+    run_task = Task(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 55, in __init__
+    self.name = name or task.__name__
+AttributeError: 'list' object has no attribute '__name__'
+
+2022-07-24 19:15:16,830 -  nornir.core -     INFO -        run() - Running task 'load_var' with args {} on 1 hosts
+2022-07-24 19:15:16,833 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'load_var' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-JinjaTemp_loadvar.py", line 12, in load_var
+    test_template(task)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/37-JinjaTemp_loadvar.py", line 19, in test_template
+    task.run(task=configuration, configs=configuration)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 161, in run
+    run_task = Task(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 55, in __init__
+    self.name = name or task.__name__
+AttributeError: 'list' object has no attribute '__name__'
+
+2022-07-24 19:18:39,542 -  nornir.core -     INFO -        run() - Running task 'load_var' with args {} on 1 hosts
