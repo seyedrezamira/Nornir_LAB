@@ -1,0 +1,11 @@
+no feature bgp
+feature bgp
+router bgp {{ host.vars.bgp.asn }}
+router-id {{ host.vars.bgp.rid }}
+address-family ipv4 unicast
+redistribute direct route-map all_int
+{%for neighbor in host.vars.bgp.neighbors%}
+neighbor {{ neighbor }}
+remote-as {{ host.vars.bgp.remote_as.nxos }}
+update-source {{ host.vars.bgp.update_source }}
+{% endfor %}

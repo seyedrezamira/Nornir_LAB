@@ -1,0 +1,20 @@
+bgp:
+    asn: "65000"
+    rid: 1.1.1.1
+    update_source: "loopback0"
+    neighbors:
+        - 2.2.2.2
+        - 3.3.3.3
+    remote_as:
+        nxos: 65001
+
+ospf:
+    process_id: "1"
+    rid: 1.1.1.1
+    ospf_int:
+        - e1/1
+        - e1/2
+        - loo0
+    area: 0
+
+

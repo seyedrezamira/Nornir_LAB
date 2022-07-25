@@ -1,5 +1,8 @@
+no feature ospf
 feature ospf
-router ospf {{host['ospf']["ospf_process"]}}
-router-id {{host["ospf"]["ospf_rid"]}}
-interface e1/1-4
-ip router ospf {{host["ospf"]["ospf_process"]}} area {{host["ospf"]["ospf_networks"]["area"]}}
+router ospf {{ host.vars.ospf.process_id }}
+router-id {{ host.vars.ospf.rid }}
+{%for int in host.vars.ospf.ospf_int%}
+int {{ int }}
+ip router ospf {{ host.vars.ospf.process_id }} are {{ host.vars.ospf.area }}
+{% endfor %}

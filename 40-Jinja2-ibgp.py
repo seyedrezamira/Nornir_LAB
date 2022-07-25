@@ -7,19 +7,20 @@ from nornir_utils.plugins.tasks.data import load_yaml
 
 nr = InitNornir(config_file="config.yaml")
 
-
 def load_vars(task):
     data = task.run(task=load_yaml, file=f"./host_vars/{task.host}.yaml")
     task.host["vars"] = data.result
-    test_template(task)
+    bgp(task)
 
-def test_template(task):
-    template = task.run(task=template_file, template="ospf.j2", path="templates")
-    task.host["ospf_config"] = template.result
-    rendered = task.host["ospf_config"]
-    configuration = rendered.splitlines()
-    # task.run(task=send_configs, configs=configuration)
+def bgp(task):
+    template = task.run(task=template_file, template="bgp.j2", path="templates")
+    task.host["bgp_config"] = template.result
+    rendered = task.host["bgp_config"]
+    config_list = rendered.splitlines()
+    task.run(task=send_configs, configs=config_list)
 
 
 results = nr.run(task=load_vars)
 print_result(results)
+
+

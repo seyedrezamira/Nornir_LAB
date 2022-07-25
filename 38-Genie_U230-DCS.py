@@ -12,7 +12,6 @@ def U230_DCS(task):
     task.host["attr"] = interface_status.scrapli_response.genie_parse_output()
     vlan_list = list(task.host["items"]["vlans"])
     
-    
     vlan_num_dic = {}
     int_status_dic = {}
     output_dic = {}
@@ -36,7 +35,6 @@ def U230_DCS(task):
     rprint(output_dic)
 
 
-result = nr.run(task=U230_DCS)
 
-import ipdb
-ipdb.set_trace()
+
+result = nr.run(task=U230_DCS)

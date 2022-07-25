@@ -1,9 +1,10 @@
 ---
-# p0-ss1:
-#     hostname: "172.21.2.77"
-#     port: 2221
-#     groups:
-#         - Nexus
+
+p0-ss1:
+    hostname: "172.21.2.77"
+    port: 2221
+    groups:
+        - Nexus
 
 
 # p0-ss2:
@@ -87,15 +88,15 @@
 #         loopback0: "172.16.132.11"
 #         bgp: "4263501007"
 
-# p1-l1b:
-#     hostname: "172.21.2.77"
-#     port: 22122
-#     groups:
-#         - Pod1
-#         - Nexus
-#     data:
-#         loopback0: "172.16.132.12"
-#         bgp: "4263501008"
+p1-l1b:
+    hostname: "172.21.2.77"
+    port: 22122
+    groups:
+        - Pod1
+        - Nexus
+    data:
+        loopback0: "172.16.132.12"
+        bgp: "4263501008"
 
 # p1-l1-x:
 #     hostname: "172.21.2.77"
@@ -127,25 +128,25 @@
 #         loopback0: "172.16.132.7"
 #         bgp: "4263501003"
 
-Nxos-1:
-    hostname: "172.21.2.77"
-    port: 22126
-    groups:
-        - Pod1
-        - Nexus
+# Nxos-1:
+#     hostname: "172.21.2.77"
+#     port: 22126
+#     groups:
+#         - Pod1
+#         - Nexus
 
 
-Nxos-2:
-    hostname: "172.21.2.77"
-    port: 22127
-    groups:
-        - Pod1
-        - Nexus
+# Nxos-2:
+#     hostname: "172.21.2.77"
+#     port: 22127
+#     groups:
+#         - Pod1
+#         - Nexus
 
 
-Nxos-3:
-    hostname: "172.21.2.77"
-    port: 22127
-    groups:
-        - Pod1
-        - Nexus
+# Nxos-3:
+#     hostname: "172.21.2.77"
+#     port: 22128
+#     groups:
+#         - Pod1
+#         - Nexus
