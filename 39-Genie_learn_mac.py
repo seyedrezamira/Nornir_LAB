@@ -9,7 +9,7 @@ vlan_list = ["e1/10","e1/20"]
 
 def learned_mac(task):
     # for vlan in vlan_list:
-    vlan_status = task.run(task=send_command, command=f"sho mac address-table inter e1/10")
+    vlan_status = task.run(task=send_command, command=f"sho mac address-table")
     task.host["items"] = vlan_status.scrapli_response.genie_parse_output()
 
 
