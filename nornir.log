@@ -9311,3 +9311,171 @@ KeyError: 'process_id'
 2022-08-18 15:17:52,024 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
 2022-08-18 15:18:12,720 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
 2022-08-18 15:18:41,917 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-08-22 14:12:09,400 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-08-22 14:43:23,623 -  nornir.core -     INFO -        run() - Running task 'get_routes' with args {} on 2 hosts
+2022-08-22 14:43:23,711 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: No route to host
+
+2022-08-22 14:43:23,711 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: No route to host
+
+2022-08-22 14:43:23,711 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'get_routes' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/044-Find_IP.py", line 13, in get_routes
+    routes = task.run(task=send_command, command="show ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-22 14:43:23,711 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'get_routes' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/044-Find_IP.py", line 13, in get_routes
+    routes = task.run(task=send_command, command="show ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-22 14:43:46,655 -  nornir.core -     INFO -        run() - Running task 'get_routes' with args {} on 2 hosts
+2022-08-22 14:43:46,730 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: No route to host
+
+2022-08-22 14:43:46,730 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: No route to host
+
+2022-08-22 14:43:46,730 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'get_routes' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/044-Find_IP.py", line 13, in get_routes
+    routes = task.run(task=send_command, command="show ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-22 14:43:46,730 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'get_routes' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/044-Find_IP.py", line 13, in get_routes
+    routes = task.run(task=send_command, command="show ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-22 14:46:26,193 -  nornir.core -     INFO -        run() - Running task 'get_routes' with args {} on 2 hosts
