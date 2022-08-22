@@ -1,0 +1,7 @@
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+Lo0                  172.16.132.0    protocol-up/link-up/admin-up
+Eth1/1               172.16.108.1    protocol-up/link-up/admin-up
+Eth1/2               172.16.108.5    protocol-up/link-up/admin-up
+Eth1/3               172.16.108.9    protocol-up/link-up/admin-up
+Eth1/4               172.16.108.13   protocol-up/link-up/admin-up

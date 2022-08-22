@@ -1,0 +1,331 @@
+!Command: show running-config
+!Running configuration last done at: Wed Jul 20 07:46:49 2022
+!Time: Wed Aug 17 12:04:35 2022
+
+version 9.3(9) Bios:version
+hostname p0-ss1
+vdc p0-ss1 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bash-shell
+nv overlay evpn
+feature ospf
+feature bgp
+feature lacp
+feature lldp
+feature bfd
+feature evmed
+
+no password strength-check
+username admin password 5 $5$ICNBDN$iKWSC0J.zLHQMJ0AfjXPBKp2FGbjdaBRJDOEAIERO8C  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 481B36C0C542C62A5197040C2E6EC69623E3 priv 483F34939019E965078844516E2F9FCF73C2 localizedV2key
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+callhome
+  email-contact sch-smart-licensing@cisco.com
+  destination-profile CiscoTAC-1 transport-method http
+  destination-profile CiscoTAC-1 index 1 http https://tools.cisco.com/its/service/oddce/services/DDCEService
+  transport http use-vrf management
+  enable
+
+vlan 1,10,20,30
+vlan 10
+  name Test10
+vlan 20
+  name Test20
+vlan 30
+  name Test30
+
+ip prefix-list AllPodNetworks_0 seq 5 permit 0.0.0.0/0 le 32
+route-map AllPodNetworks permit 10
+  match ip address prefix-list AllPodNetworks_0
+route-map SUPERSPINE_TO_SPINE_EVPN_OUT permit 10
+  set ip next-hop unchanged
+  set community 0:12 additive
+route-map SUPERSPINE_TO_SPINE_FABRIC_OUT permit 10
+  set community 0:13 additive
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.254
+system vrf-member-change retain-l3-config
+
+
+interface Ethernet1/1
+  description connected to p1-s1(92QKW05M0NU) via Ethernet1/35
+  no switchport
+  mtu 9050
+  ip address 172.16.108.1/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/2
+  description connected to p1-s2(9R4U52ZKTB5) via Ethernet1/35
+  no switchport
+  mtu 9050
+  ip address 172.16.108.5/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/3
+  no switchport
+  mtu 9050
+  ip address 172.16.108.9/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/4
+  description connected to p1-s4(9UB5G3UCY2C) via Ethernet1/35
+  no switchport
+  mtu 9050
+  ip address 172.16.108.13/31
+  ip router ospf 1 area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/5
+  no switchport
+  no shutdown
+
+interface Ethernet1/6
+  no switchport
+  no shutdown
+
+interface Ethernet1/7
+  no switchport
+  no shutdown
+
+interface Ethernet1/8
+  no switchport
+  no shutdown
+
+interface Ethernet1/9
+
+interface Ethernet1/10
+
+interface Ethernet1/11
+
+interface Ethernet1/12
+
+interface Ethernet1/13
+
+interface Ethernet1/14
+  switchport access vlan 10
+
+interface Ethernet1/15
+  switchport access vlan 10
+
+interface Ethernet1/16
+  switchport access vlan 10
+
+interface Ethernet1/17
+  switchport access vlan 10
+
+interface Ethernet1/18
+  switchport access vlan 10
+
+interface Ethernet1/19
+
+interface Ethernet1/20
+
+interface Ethernet1/21
+
+interface Ethernet1/22
+
+interface Ethernet1/23
+
+interface Ethernet1/24
+  switchport access vlan 20
+
+interface Ethernet1/25
+  switchport access vlan 20
+
+interface Ethernet1/26
+  switchport access vlan 20
+
+interface Ethernet1/27
+  switchport access vlan 20
+
+interface Ethernet1/28
+  switchport access vlan 20
+
+interface Ethernet1/29
+
+interface Ethernet1/30
+
+interface Ethernet1/31
+
+interface Ethernet1/32
+
+interface Ethernet1/33
+
+interface Ethernet1/34
+  switchport access vlan 30
+
+interface Ethernet1/35
+  switchport access vlan 30
+
+interface Ethernet1/36
+  switchport access vlan 30
+
+interface Ethernet1/37
+  switchport access vlan 30
+
+interface Ethernet1/38
+  switchport access vlan 30
+
+interface Ethernet1/39
+
+interface Ethernet1/40
+
+interface Ethernet1/41
+
+interface Ethernet1/42
+
+interface Ethernet1/43
+
+interface Ethernet1/44
+
+interface Ethernet1/45
+
+interface Ethernet1/46
+
+interface Ethernet1/47
+
+interface Ethernet1/48
+
+interface Ethernet1/49
+
+interface Ethernet1/50
+
+interface Ethernet1/51
+
+interface Ethernet1/52
+
+interface Ethernet1/53
+
+interface Ethernet1/54
+
+interface Ethernet1/55
+
+interface Ethernet1/56
+
+interface Ethernet1/57
+
+interface Ethernet1/58
+
+interface Ethernet1/59
+
+interface Ethernet1/60
+
+interface Ethernet1/61
+
+interface Ethernet1/62
+
+interface Ethernet1/63
+
+interface Ethernet1/64
+
+interface mgmt0
+  description connected to Switch via Ethernet0/0
+  vrf member management
+  ip address 192.168.1.11/24
+
+interface loopback0
+  ip address 172.16.132.0/32
+icam monitor scale
+
+line console
+line vty
+boot nxos bootflash:/nxos.9.3.9.bin sup-1
+router ospf 1
+  router-id 172.16.132.0
+router bgp 4263501000
+  router-id 172.16.132.0
+  bestpath as-path multipath-relax
+  log-neighbor-changes
+  address-family ipv4 unicast
+    redistribute direct route-map AllPodNetworks
+    maximum-paths 64
+  address-family l2vpn evpn
+    retain route-target all
+  template peer-policy l3clos-s
+    send-community
+    soft-reconfiguration inbound always
+  template peer-policy l3clos-s-evpn-policy
+    send-community
+    send-community extended
+    soft-reconfiguration inbound always
+  template peer-session l3clos
+    bfd
+    timers 30 90
+  template peer-session l3clos-nobfd
+    timers 1 3
+  template peer-session l3clos-s-evpn
+    update-source loopback0
+    ebgp-multihop 2
+    timers 30 90
+  neighbor 172.16.108.0
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.4
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.8
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.108.12
+    inherit peer-session l3clos
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb
+    address-family ipv4 unicast
+      inherit peer-policy l3clos-s 1
+      route-map SUPERSPINE_TO_SPINE_FABRIC_OUT out
+  neighbor 172.16.132.2
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s1-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.3
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s2-xx-sr001-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.4
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s3-xx-src002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out
+  neighbor 172.16.132.5
+    inherit peer-session l3clos-s-evpn
+    remote-as 4263501001
+    description facing_nf-p1-s4-xx-sr002-ce6-wtr-gb-evpn-overlay
+    address-family l2vpn evpn
+      inherit peer-policy l3clos-s-evpn-policy 1
+      route-map SUPERSPINE_TO_SPINE_EVPN_OUT out

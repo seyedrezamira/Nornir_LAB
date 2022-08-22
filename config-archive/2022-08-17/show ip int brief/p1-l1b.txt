@@ -1,0 +1,8 @@
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+Vlan2999             172.16.108.73   protocol-up/link-up/admin-up
+Lo0                  172.16.132.12   protocol-up/link-up/admin-up
+Eth1/49              172.16.108.71   protocol-up/link-up/admin-up
+Eth1/50              172.16.108.59   protocol-up/link-up/admin-up
+Eth1/51              172.16.108.57   protocol-up/link-up/admin-up
+Eth1/52              172.16.108.65   protocol-up/link-up/admin-up

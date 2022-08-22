@@ -8769,3 +8769,545 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: template_file (failed)
 2022-07-27 09:53:03,298 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 2 hosts
 2022-07-27 09:57:30,159 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 2 hosts
 2022-07-27 10:02:16,014 -  nornir.core -     INFO -        run() - Running task 'learned_mac' with args {} on 2 hosts
+2022-07-28 16:32:11,346 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 16:45:30,327 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 16:46:14,345 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:08:05,734 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:17:51,191 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:21:50,565 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:21:52,175 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:21:52,194 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:24:04,919 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:24:31,425 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:24:33,015 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 15, in routing_infor
+    process_id = task.host["items"]["vrf"]["default"]["address_family"]["ipv4"]["routes"][key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:24:33,034 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 15, in routing_infor
+    process_id = task.host["items"]["vrf"]["default"]["address_family"]["ipv4"]["routes"][key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:24:57,610 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:25:25,288 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:25:26,888 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-28 17:25:26,888 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+TypeError: list indices must be integers or slices, not str
+
+2022-07-28 17:25:58,182 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:25:59,793 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:25:59,813 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:26:32,032 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:26:33,660 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:26:33,679 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:27:06,442 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:27:08,040 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:27:08,061 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:28:08,008 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:28:09,603 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:28:09,604 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:28:28,846 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:28:30,490 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:28:30,491 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:28:45,811 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:28:47,413 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:28:47,432 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:30:16,903 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:30:18,515 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:30:18,533 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:39:28,096 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:39:29,711 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:39:29,729 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:42:20,700 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:42:31,558 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:43:25,313 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:43:35,185 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:43:51,473 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:43:54,142 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 30, in U230_DCS
+    if task.host["attr"][int]["port_mode"]=="access":
+KeyError: 'Port-channel1'
+
+2022-07-28 17:44:26,858 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:44:29,648 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 31, in U230_DCS
+    admin_state= task.host["attr"][int]["admin_state"]
+KeyError: 'Port-channel1'
+
+2022-07-28 17:45:00,927 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:45:39,150 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-07-28 17:45:54,234 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-28 17:45:54,235 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 9, in U230_DCS
+    vlan_status = task.run(task=send_command, command="show vlan")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-28 17:45:54,236 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-28 17:45:54,236 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'U230_DCS' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 9, in U230_DCS
+    vlan_status = task.run(task=send_command, command="show vlan")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-28 17:46:58,722 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:47:13,813 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-28 17:47:13,814 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-28 17:47:13,815 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 10, in routing_infor
+    route_status = task.run(task=send_command, command=f"sho ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-28 17:47:13,815 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 10, in routing_infor
+    route_status = task.run(task=send_command, command=f"sho ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-28 17:47:27,874 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:47:42,955 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-28 17:47:42,955 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 10, in routing_infor
+    route_status = task.run(task=send_command, command=f"sho ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-28 17:47:42,963 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 290, in channel_authenticate_ssh
+    self._ssh_message_handler(output=authenticate_buf)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/base_channel.py", line 432, in _ssh_message_handler
+    raise ScrapliAuthenticationFailed(msg)
+scrapli.exceptions.ScrapliAuthenticationFailed: Timed out connecting to host
+
+2022-07-28 17:47:42,963 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 10, in routing_infor
+    route_status = task.run(task=send_command, command=f"sho ip route")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-07-28 17:48:07,335 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:48:08,918 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    next_hop_list = routes[key]["next_hop"]["next_list"]
+KeyError: 'next_list'
+
+2022-07-28 17:48:08,920 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    next_hop_list = routes[key]["next_hop"]["next_list"]
+KeyError: 'next_list'
+
+2022-07-28 17:48:21,294 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:48:22,926 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    next_hop_list = routes[key]["next_hop"]["next_list"]
+KeyError: 'next_list'
+
+2022-07-28 17:48:22,927 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    next_hop_list = routes[key]["next_hop"]["next_list"]
+KeyError: 'next_list'
+
+2022-07-28 17:49:03,882 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:49:05,501 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:49:05,519 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:49:23,937 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:49:25,579 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:49:25,599 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'routing_infor' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/042-Genie_show_iproute.py", line 14, in routing_infor
+    process_id = routes[key]["process_id"]
+KeyError: 'process_id'
+
+2022-07-28 17:51:37,849 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-07-28 17:53:38,071 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-08-12 12:30:36,829 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-08-17 15:15:33,198 -  nornir.core -     INFO -        run() - Running task 'routing_infor' with args {} on 2 hosts
+2022-08-17 15:26:48,734 -  nornir.core -     INFO -        run() - Running task 'Create Backup' with args {} on 2 hosts
+2022-08-18 15:17:52,024 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-08-18 15:18:12,720 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts
+2022-08-18 15:18:41,917 -  nornir.core -     INFO -        run() - Running task 'U230_DCS' with args {} on 2 hosts

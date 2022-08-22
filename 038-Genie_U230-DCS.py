@@ -38,3 +38,7 @@ def U230_DCS(task):
 
 
 result = nr.run(task=U230_DCS)
+print_result(result)
+
+import ipdb
+ipdb.set_trace()
