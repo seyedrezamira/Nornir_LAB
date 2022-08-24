@@ -9479,3 +9479,1008 @@ nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
 
 
 2022-08-22 14:46:26,193 -  nornir.core -     INFO -        run() - Running task 'get_routes' with args {} on 2 hosts
+2022-08-24 11:59:06,978 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 11:59:08,826 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 29, in show_vlan
+    interface_per_vlan = task.host["items"]["vlans"][vlan_num]["interfaces"]
+KeyError: 'interfaces'
+
+2022-08-24 11:59:08,827 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 35, in show_vlan
+    if not str(int).startswith("Port") and task.host["attr"][int]["port_mode"]=="access":
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 350, in __getitem__
+    return self.data[item]
+KeyError: 'attr'
+
+2022-08-24 11:59:23,116 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 11:59:25,519 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 488, in read
+    s = self.fileobj.read1(size)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/transport.py", line 158, in read
+    buf = self.session.read(65535)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 493, in read
+    raise EOFError("End Of File (EOF). Exception style platform.")
+EOFError: End Of File (EOF). Exception style platform.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 287, in channel_authenticate_ssh
+    buf = self.read()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 69, in read
+    buf = self.transport.read()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 99, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 177, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/transport.py", line 165, in read
+    raise ScrapliConnectionError(msg) from exc
+scrapli.exceptions.ScrapliConnectionError: encountered EOF reading from transport; typically means the device closed the connection
+
+2022-08-24 11:59:25,519 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 13, in show_vlan
+    vlan_status = task.run(task=send_command, command="show vlan")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 11:59:25,743 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 488, in read
+    s = self.fileobj.read1(size)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/transport.py", line 158, in read
+    buf = self.session.read(65535)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 493, in read
+    raise EOFError("End Of File (EOF). Exception style platform.")
+EOFError: End Of File (EOF). Exception style platform.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 36, in send_command
+    scrapli_conn = task.host.get_connection("scrapli", task.nornir.config)
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 494, in get_connection
+    self.open_connection(
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 546, in open_connection
+    conn_obj.open(
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/connection.py", line 98, in open
+    connection.open()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/base/sync_driver.py", line 86, in open
+    self.channel.channel_authenticate_ssh(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 341, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 287, in channel_authenticate_ssh
+    buf = self.read()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/channel/sync_channel.py", line 69, in read
+    buf = self.transport.read()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 99, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 177, in _multiprocessing_timeout
+    return future.result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/transport.py", line 165, in read
+    raise ScrapliConnectionError(msg) from exc
+scrapli.exceptions.ScrapliConnectionError: encountered EOF reading from transport; typically means the device closed the connection
+
+2022-08-24 11:59:25,743 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 13, in show_vlan
+    vlan_status = task.run(task=send_command, command="show vlan")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 11:59:30,883 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 11:59:32,477 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 29, in show_vlan
+    interface_per_vlan = task.host["items"]["vlans"][vlan_num]["interfaces"]
+KeyError: 'interfaces'
+
+2022-08-24 11:59:32,477 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 35, in show_vlan
+    if not str(int).startswith("Port") and task.host["attr"][int]["port_mode"]=="access":
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 350, in __getitem__
+    return self.data[item]
+KeyError: 'attr'
+
+2022-08-24 11:59:47,541 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 11:59:49,165 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 33, in show_vlan
+    if not str(int).startswith("Port") and task.host["attr"][int]["port_mode"]=="access":
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 350, in __getitem__
+    return self.data[item]
+KeyError: 'attr'
+
+2022-08-24 11:59:49,165 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 27, in show_vlan
+    interface_per_vlan = task.host["items"]["vlans"][vlan_num]["interfaces"]
+KeyError: 'interfaces'
+
+2022-08-24 12:01:45,090 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:06:33,425 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:07:05,744 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:07:21,493 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:08:01,401 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:08:44,341 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:10:36,234 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:10:37,744 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 17, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:10:37,776 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 17, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:11:12,134 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:11:13,681 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 18, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:11:13,681 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 18, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:11:47,294 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:11:48,855 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 17, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:11:48,856 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 17, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:12:18,063 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:12:45,628 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:13:38,900 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:14:33,592 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:15:20,925 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 12:15:22,538 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 17, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:15:49,217 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 12:15:50,782 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 17, in show_vlan
+    vlan_list.appen(vlan)
+AttributeError: 'list' object has no attribute 'appen'
+
+2022-08-24 12:16:39,795 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 12:17:32,006 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 12:17:44,267 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:19:28,794 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:19:38,521 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:20:25,960 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:20:49,072 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 12:23:05,969 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 12:23:07,538 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 12:26:26,152 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 12:26:27,734 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:00:22,321 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:00:23,849 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:00:51,360 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:00:52,891 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:03:26,935 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:03:28,456 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:09:52,030 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:09:53,514 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:10:18,210 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:10:19,766 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:28:45,294 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:28:46,809 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:29:01,361 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:29:02,914 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:29:24,131 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:29:25,642 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:30:26,888 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:30:28,389 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:31:14,595 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:31:16,149 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:37:20,956 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:37:22,778 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:37:24,076 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 29, in int_stat
+    admin_state = interfaces[int]["admin_state"]
+KeyError: 'admin_state'
+
+2022-08-24 13:42:20,297 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:42:21,901 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:43:58,760 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:44:00,438 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:44:36,238 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:44:37,864 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:44:59,103 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:45:00,742 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:45:38,737 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:45:40,371 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:45:58,101 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:45:59,788 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:48:50,425 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 13:48:52,036 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:48:52,036 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:48:52,534 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:49:22,143 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 13:49:22,144 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:49:22,239 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 13:49:22,239 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:50:01,203 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:50:02,851 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:50:30,226 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 13:50:31,809 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:50:31,809 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:50:32,231 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:50:50,167 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 13:50:51,773 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:50:51,774 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:50:52,168 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:50:52,170 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:51:21,977 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 13:51:21,977 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:51:22,011 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 13:51:22,011 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:52:05,932 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:52:07,597 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:52:31,491 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:52:33,080 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:52:49,996 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 13:52:51,638 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 13:53:39,423 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 13:53:41,066 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:53:41,066 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 13:53:41,473 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:53:41,487 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 13:56:44,678 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 13:57:22,771 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:00:32,344 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:02:22,412 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:03:57,609 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 14:03:59,132 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 14:04:13,596 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:04:15,155 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:04:15,155 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:04:45,258 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 14:04:45,258 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 25, in int_stat
+    #     interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:04:45,291 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 14:04:45,291 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 25, in int_stat
+    #     interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:04:50,647 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:05:18,684 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:07:13,773 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:07:15,361 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:07:15,361 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:07:15,737 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:07:50,171 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 14:07:51,687 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 14:09:02,604 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 14:09:04,128 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 1 hosts
+2022-08-24 14:09:20,384 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:09:21,958 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:09:21,958 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:09:52,063 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 622, in isalive
+    pid, status = os.waitpid(self.pid, waitpid_options)
+ChildProcessError: [Errno 10] No child processes
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 315, in _handle_timeout
+    self.transport_instance.close()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/transport.py", line 140, in close
+    self.session.close()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 439, in close
+    if self.isalive():
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/transport/plugins/system/ptyprocess.py", line 626, in isalive
+    raise PtyProcessError(
+scrapli.transport.plugins.system.ptyprocess.PtyProcessError: isalive() encountered condition where "terminated" is 0, but there was no child process. Did someone else call waitpid() on our process?
+
+2022-08-24 14:09:52,063 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:09:52,099 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 14:09:52,100 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:09:52,160 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 14:09:52,160 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:09:52,199 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'send_command' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/usr/local/lib/python3.8/dist-packages/nornir_scrapli/tasks/core/send_command.py", line 37, in send_command
+    scrapli_response = scrapli_conn.send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/network/sync_driver.py", line 240, in send_command
+    response: Response = super().send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 171, in send_command
+    response: Response = self._send_command(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 413, in decorate
+    result = wrapped_func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/driver/generic/sync_driver.py", line 138, in _send_command
+    raw_response, processed_response = self.channel.send_input(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 280, in decorate
+    return self._multiprocessing_timeout(
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 340, in _multiprocessing_timeout
+    self._handle_timeout()
+  File "/usr/local/lib/python3.8/dist-packages/scrapli/decorators.py", line 316, in _handle_timeout
+    raise ScrapliTimeout(self.message)
+scrapli.exceptions.ScrapliTimeout: timed out sending input to device
+
+2022-08-24 14:09:52,199 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:10:25,846 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:10:27,424 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:10:27,424 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:10:27,796 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:10:27,816 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:18:27,666 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:18:29,222 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:18:29,223 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:18:29,633 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'int_stat' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 24, in int_stat
+    interface_status = task.run(task=send_command, command="show interface")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 14:19:58,400 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:20:23,206 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:21:01,279 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:21:48,861 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:21:50,425 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:22:15,132 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:22:16,669 -  nornir.core -     INFO -        run() - Running task 'int_stat' with args {} on 2 hosts
+2022-08-24 14:25:51,615 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:26:31,729 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:27:20,272 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:27:54,749 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:33:04,734 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:33:06,260 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/temp.py", line 35, in show_vlan
+    if not str(int).startswith("Port") and task.host["attr"][int]["port_mode"]=="access":
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 350, in __getitem__
+    return self.data[item]
+KeyError: 'attr'
+
+2022-08-24 14:33:06,261 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/temp.py", line 35, in show_vlan
+    if not str(int).startswith("Port") and task.host["attr"][int]["port_mode"]=="access":
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/inventory.py", line 350, in __getitem__
+    return self.data[item]
+KeyError: 'attr'
+
+2022-08-24 14:33:20,504 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 2 hosts
+2022-08-24 14:34:15,654 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 14:36:48,265 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 14:37:35,089 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 14:39:04,023 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 14:39:47,229 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 14:42:53,988 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:03:56,864 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:06:58,214 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:08:03,882 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:08:06,760 - nornir.core.task -    ERROR -      start() - Host 'p0-ss2': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 34, in show_vlan
+    interface_status = task.run(task=send_command, command="show mac address-table limit")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 15:08:07,050 - nornir.core.task -    ERROR -      start() - Host 'p0-ss1': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 34, in show_vlan
+    interface_status = task.run(task=send_command, command="show mac address-table limit")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 15:08:07,071 - nornir.core.task -    ERROR -      start() - Host 'p1-l1a': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 34, in show_vlan
+    interface_status = task.run(task=send_command, command="show mac address-table limit")
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 174, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: send_command (failed)
+
+
+2022-08-24 15:08:47,850 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:12:44,410 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:14:33,759 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:15:04,934 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:20:56,976 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:24:15,660 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:25:27,641 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 3 hosts
+2022-08-24 15:26:22,799 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:28:21,957 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:29:31,204 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:30:28,726 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:32:49,088 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:32:52,055 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 32, in show_vlan
+    test = task.host["mac"]["mac_table"]["vlans"]
+TypeError: list indices must be integers or slices, not str
+
+2022-08-24 15:33:41,707 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:33:44,608 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 32, in show_vlan
+    test = task.host["mac"]["mac_table"]["vlans"]
+TypeError: list indices must be integers or slices, not str
+
+2022-08-24 15:34:33,239 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:34:36,153 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 32, in show_vlan
+    test = task.host["mac"]["mac_table"]["vlans"]
+TypeError: list indices must be integers or slices, not str
+
+2022-08-24 15:34:52,890 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:35:30,565 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:35:33,400 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 32, in show_vlan
+    test = task.host["mac"]["mac_table"]
+TypeError: list indices must be integers or slices, not str
+
+2022-08-24 15:35:56,098 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:37:04,885 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:37:46,763 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:39:15,694 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:39:18,945 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 32, in show_vlan
+    test = task.host["mac"]["mac_table"]["vlans"]
+TypeError: list indices must be integers or slices, not str
+
+2022-08-24 15:39:30,122 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:41:19,073 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:41:22,209 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 33, in show_vlan
+    test = task.host["mac"]["mac_table"]["vlans"]
+TypeError: list indices must be integers or slices, not str
+
+2022-08-24 15:41:53,164 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:42:33,074 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:43:06,430 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:44:42,262 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:46:53,514 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:46:57,175 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 35, in show_vlan
+    mac_list = test["mac"]["vlan"]["mac_addresses"]
+KeyError: 'mac'
+
+2022-08-24 15:47:42,975 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:47:46,790 - nornir.core.task -    ERROR -      start() - Host 'p1-l1b': task 'show_vlan' failed with traceback:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nornir/core/task.py", line 99, in start
+    r = self.task(self, **self.params)
+  File "/home/smira/Desktop/Test_Environment/Nornir_LAB/038-Genie_U230-DCS.py", line 35, in show_vlan
+    mac_list = test["mac"]["vlan"]["mac_addresses"]
+KeyError: 'mac'
+
+2022-08-24 15:48:13,348 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:49:17,748 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:49:35,197 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:50:39,533 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:53:12,055 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:54:50,723 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:56:38,786 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:59:03,756 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 15:59:40,037 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
+2022-08-24 16:00:30,703 -  nornir.core -     INFO -        run() - Running task 'show_vlan' with args {} on 1 hosts
