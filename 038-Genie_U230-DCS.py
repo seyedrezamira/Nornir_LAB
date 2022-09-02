@@ -1,9 +1,6 @@
 from nornir import InitNornir
 from nornir_scrapli.tasks import send_command
-from nornir_utils.plugins.functions import print_result
 from rich import print as rprint
-from pprint import pprint 
-
 
 
 def update_dictionary(dictionary, key, value):
@@ -56,8 +53,6 @@ def show_vlan(task):
         if mac_dic !={}:
             for k,v in mac_dic.items():
                 update_dictionary(new_dic,k,v)
-        
-        # rprint(f"dic e akhare ma ine ---> [red]{new_dic}[/red]")
 
     rprint(f"The list of vlans for [red][bold]{task.host}[/bold][/red] is {vlan_list}")
     rprint(f"\n\nThe status of interfaces on [red][bold]{task.host}[/bold][/red] is {int_dic}")
@@ -66,5 +61,3 @@ def show_vlan(task):
 
 nr.run(task=show_vlan)
 
-# import ipdb
-# ipdb.set_trace()
