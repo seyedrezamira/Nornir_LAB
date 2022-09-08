@@ -6,8 +6,8 @@ from pprint import pprint
 
 nr = InitNornir(config_file="config.yaml")
 
-def routing_infor(task):
-    route_status = task.run(task=send_command, command=f"sho ip route")
+def routing_infor(task,test):
+    route_status = task.run(task=send_command, command=f"{test}")
     task.host["items"] = route_status.scrapli_response.genie_parse_output()
     routes = task.host["items"]["vrf"]["default"]["address_family"]["ipv4"]["routes"]
     for key in routes:
@@ -16,9 +16,10 @@ def routing_infor(task):
             rprint(f"process_id of {key} is {process_id}")
         except KeyError:
             pass
-        
-result = nr.run(task=routing_infor)
-# print_result(result)
+
+
+
+result = nr.run(task={routing_infor, "show ip route"})
 
 # import ipdb
 # ipdb.set_trace()

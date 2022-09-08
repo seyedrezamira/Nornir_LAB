@@ -21,7 +21,7 @@ def show_command(task):
 
 result = nr.run(task=show_command)
 #pprint(hosts_dict)
-print_result(result)
+# print_result(result)
 
 import ipdb
 ipdb.set_trace()
